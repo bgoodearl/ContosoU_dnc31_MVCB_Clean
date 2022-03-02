@@ -31,6 +31,9 @@ Create your local database and use the SQL script:<br/>
 `...\SqlScripts\Schema\Schema1.sql`<br/>
 to create the tables.<br/>
 
+Copy `...\_ConfigSource\src\tests\CU.ApplicationIntegrationTests\appsettings.LocalTesting.json`
+to `...\src\tests\CU.ApplicationIntegrationTests` and modify connection string for your environment.
+
 ## Resource links
 
 [Clean Architecture and related Resource Links](./_docs/CC3_CleanResources.md)<br/>
@@ -40,11 +43,12 @@ to create the tables.<br/>
 
 ## Projects
 
-Project Name                 | Description
--------------                | ------------
-ContosoUniversity.Models     | Persistent Data Object Models (Domain)
-CU.Application               | Application specific code
-CU.Application.Common        | Interfaces allowing use of the Repository
-CU.Application.Shared        | Interfaces and Classes shared among multiple CU projects
-CU.Infrastructure            | Infrastructure, including Entity Framework DbContext, Repositories, and Migrations
-CU.SharedKernel              | Classes shared among multiple app projects
+Project Name                    | Description
+-------------                   | ------------
+ContosoUniversity.Models        | Persistent Data Object Models (Domain)
+CU.Application                  | Application specific code
+CU.Application.Common           | Interfaces allowing use of the Repository
+CU.Application.Shared           | Interfaces and Classes shared among multiple CU projects
+CU.Infrastructure               | Infrastructure, including Entity Framework DbContext, Repositories, and Migrations
+CU.SharedKernel                 | Classes shared among multiple app projects
+CU.ApplicationIntegrationTests  | 

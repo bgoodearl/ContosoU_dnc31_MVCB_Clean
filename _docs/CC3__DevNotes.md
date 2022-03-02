@@ -16,6 +16,8 @@
             Added CU.Application and CU.Infrastructure<br/>
             Migrated SchoolRepository and factory from layered app<br/>
             Added Infrastructure DependencyInjection<br/>
+            Added CU.ApplicationIntegrationTests, first test:
+            CanGetCoursesAsync - using ISchoolDbContext<br/>
 		</td>
     </tr>
     <tr>
