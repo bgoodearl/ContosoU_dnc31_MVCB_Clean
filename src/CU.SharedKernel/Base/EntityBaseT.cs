@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CU.SharedKernel.Base
 {
@@ -10,6 +11,7 @@ namespace CU.SharedKernel.Base
         /// </summary>
         public abstract TId Id { get; }
 
+        [NotMapped]
         public List<DomainEventBase> DomainEvents { get; private set; } = new List<DomainEventBase>();
     }
 }

@@ -19,9 +19,22 @@ A parallel solution using .NET 6 can be found [in GitHub here](https://github.co
 
 [Dev Notes](./_docs/CC3__DevNotes.md)<br/>
 
+## IMPORTANT NOTES
+
+### Initial setup after cloning repo or getting code in zip
+
+Be sure to copy `...\_ConfigSource\src\CU.Infrastructure\App.config` 
+to `...\src\CU.Infrastructure`
+and correct connection string before starting work on the app.
+
+Create your local database and use the SQL script:<br/>
+`...\SqlScripts\Schema\Schema1.sql`<br/>
+to create the tables.<br/>
+
 ## Resource links
 
 [Clean Architecture and related Resource Links](./_docs/CC3_CleanResources.md)<br/>
+[EF Resources](./_docs/CC3_EFResources.md)<br/>
 [Other Resources](./_docs/CC3_Resources.md)<br/>
 [Tools](./_docs/CC3_Tools.md)<br/>
 
@@ -29,7 +42,9 @@ A parallel solution using .NET 6 can be found [in GitHub here](https://github.co
 
 Project Name                 | Description
 -------------                | ------------
-CU.SharedKernel              | Classes shared among multiple app projects
 ContosoUniversity.Models     | Persistent Data Object Models (Domain)
+CU.Application               | Application specific code
 CU.Application.Common        | Interfaces allowing use of the Repository
 CU.Application.Shared        | Interfaces and Classes shared among multiple CU projects
+CU.Infrastructure            | Infrastructure, including Entity Framework DbContext, Repositories, and Migrations
+CU.SharedKernel              | Classes shared among multiple app projects
