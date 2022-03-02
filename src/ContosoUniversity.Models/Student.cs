@@ -1,13 +1,18 @@
-﻿using System;
+﻿using CU.SharedKernel.Base;
+using CU.SharedKernel.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
-    public class Student
+    public class Student : EntityBaseT<int>, IHasDomainEvents
     {
         public int ID { get; set; }
+
+        [NotMapped]
+        public override int Id { get { return ID; } }
 
         [Required]
         [StringLength(50, ErrorMessage = "Last name cannot be longer than 50 characters.")]

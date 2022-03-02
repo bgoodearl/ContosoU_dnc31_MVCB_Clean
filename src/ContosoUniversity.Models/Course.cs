@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using CU.SharedKernel.Base;
+using CU.SharedKernel.Interfaces;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
-    public class Course
+    public class Course : EntityBaseT<int>, IHasDomainEvents
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "Number")]
         public int CourseID { get; set; }
+
+        [NotMapped]
+        public override int Id { get { return CourseID; } }
 
         [StringLength(50, MinimumLength = 3)]
         public string Title { get; set; }

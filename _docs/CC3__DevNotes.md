@@ -11,6 +11,7 @@
             Started with CU.SharedKernel<br/>
             Added ContosoUniversity.Models - persistent
             object models - from ContosoUniversity_dnc31_MVC<br/>
+            Wired up entity models to EntityBaseT<br/>
 		</td>
     </tr>
     <tr>

@@ -1,13 +1,18 @@
-﻿using System;
+﻿using CU.SharedKernel.Base;
+using CU.SharedKernel.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
-    public class Instructor
+    public class Instructor : EntityBaseT<int>, IHasDomainEvents
     {
         public int ID { get; set; }
+
+        [NotMapped]
+        public override int Id { get { return ID; } }
 
         [Display(Name = "Last Name"), StringLength(50, MinimumLength = 1)]
         public string LastName { get; set; }

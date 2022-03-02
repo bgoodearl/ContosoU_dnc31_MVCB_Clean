@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CU.SharedKernel.Base;
+using CU.SharedKernel.Interfaces;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
@@ -7,9 +10,13 @@ namespace ContosoUniversity.Models
         A, B, C, D, F
     }
 
-    public class Enrollment
+    public class Enrollment : EntityBaseT<int>, IHasDomainEvents
     {
         public int EnrollmentID { get; set; }
+
+        [NotMapped]
+        public override int Id { get { return EnrollmentID; } }
+
         public int CourseID { get; set; }
         public int StudentID { get; set; }
         [DisplayFormat(NullDisplayText = "No grade")]

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace CU.SharedKernel.Interfaces
 {
-    public interface IHasDomainEvent
+    public interface IHasDomainEvents
     {
-        List<DomainEventBase> DomainEvents { get; set; }
+        List<DomainEventBase> DomainEvents { get; }
     }
 }
