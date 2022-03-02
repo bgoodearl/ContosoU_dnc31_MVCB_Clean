@@ -22,6 +22,7 @@ A parallel solution using .NET 6 can be found [in GitHub here](https://github.co
 ## Resource links
 
 [Clean Architecture and related Resource Links](./_docs/CC3_CleanResources.md)<br/>
+[Other Resources](./_docs/CC3_Resources.md)<br/>
 [Tools](./_docs/CC3_Tools.md)<br/>
 
 ## Projects
@@ -30,3 +31,5 @@ Project Name                 | Description
 -------------                | ------------
 CU.SharedKernel              | Classes shared among multiple app projects
 ContosoUniversity.Models     | Persistent Data Object Models (Domain)
+CU.Application.Common        | Interfaces allowing use of the Repository
+CU.Application.Shared        | Interfaces and Classes shared among multiple CU projects

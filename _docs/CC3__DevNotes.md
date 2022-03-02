@@ -12,6 +12,7 @@
             Added ContosoUniversity.Models - persistent
             object models - from ContosoUniversity_dnc31_MVC<br/>
             Wired up entity models to EntityBaseT<br/>
+            Added CU.Application.Shared and CU.Application.Common<br/>
 		</td>
     </tr>
     <tr>
