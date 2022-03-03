@@ -10,6 +10,8 @@
 		<td>
             Added SchoolRepository and related test<br/>
             Added SchoolViewDataRepository and related test<br/>
+            Added ASP.NET Core 3.1 MVC web app - ContosoUniversity<br/>
+            Switched to attribute routing<br/>
 		</td>
     </tr>
     <tr>
