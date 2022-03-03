@@ -25,6 +25,8 @@
             Handler, AutoMapper mapping in CU.Application<br/>
             Added DependencyInjection to CU.Application<br/>
             Integration test GetDepartmentsTests.CanGetDepartmentsList()<br/>
+            Wired up CU.Application to CU web app,
+            use MediatR query for Departments Index MVC page<br/>
 		</td>
     </tr>
     <tr>

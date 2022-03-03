@@ -1,9 +1,11 @@
 ﻿using Ardalis.GuardClauses;
 using CU.Application.Common.Interfaces;
 using CU.Application.Shared.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using System.Threading.Tasks;
 
 namespace ContosoUniversity.Controllers
 {
@@ -18,11 +20,13 @@ namespace ContosoUniversity.Controllers
             SchoolDbContextFactory = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISchoolDbContextFactory>();
             SchoolRepositoryFactory = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISchoolRepositoryFactory>();
             SchoolViewDataRepositoryFactory = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISchoolViewDataRepositoryFactory>();
+            Mediator = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISender>();
         }
 
         #region Read Only variables
 
         protected IHttpContextAccessor HttpContextAccessor { get; }
+        protected ISender Mediator { get; }
 
         #endregion Read Only variables
 
@@ -48,6 +52,11 @@ namespace ContosoUniversity.Controllers
         }
 
         #endregion Repository/Database
+
+        protected async Task<TResponse> SendQueryAsync<TResponse>(IRequest<TResponse> request)
+        {
+            return await Mediator.Send(request);
+        }
 
     }
 }
