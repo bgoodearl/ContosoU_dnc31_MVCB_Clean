@@ -1,15 +1,15 @@
-﻿@* @using CU.Application.Components *@
+﻿@using ContosoUniversity.Components
 @using CU.Application.Shared.ViewModels.Courses
 @model CoursesViewModel
 @{
     @if (Model.ViewMode >= 0)
     {
-        //Layout = "~/Views/Shared/_LayoutBlazor.cshtml";
+        Layout = "~/Views/Shared/_LayoutBlazor.cshtml";
     }
     ViewData["Title"] = "Courses";
 }
-@*@if (Model.ViewMode < 0)*@
-@{
+@if (Model.ViewMode < 0)
+{
     <h1 class="h2">Courses - MVC</h1>
 
     <p>
@@ -18,7 +18,7 @@
 
     @await Html.PartialAsync("Partial/CourseListPartial", Model.CourseList)
 }
-@*else
-    {
+else
+{
     <component type="typeof(Courses)" render-mode="ServerPrerendered" param-CoursesVM="Model" />
-    }*@
+}

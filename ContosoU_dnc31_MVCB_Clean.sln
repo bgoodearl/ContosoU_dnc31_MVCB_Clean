@@ -44,6 +44,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoUniversity", "src\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Components", "src\Demo.Components\Demo.Components.csproj", "{F4A83CC2-E51D-475E-8D5C-507634893C1C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoUniversity.Components", "src\ContosoUniversity.Components\ContosoUniversity.Components.csproj", "{FD04B662-B8D3-4DE2-81F3-FAB76CF1927A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{F4A83CC2-E51D-475E-8D5C-507634893C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4A83CC2-E51D-475E-8D5C-507634893C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4A83CC2-E51D-475E-8D5C-507634893C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD04B662-B8D3-4DE2-81F3-FAB76CF1927A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD04B662-B8D3-4DE2-81F3-FAB76CF1927A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD04B662-B8D3-4DE2-81F3-FAB76CF1927A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD04B662-B8D3-4DE2-81F3-FAB76CF1927A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{DB3A4889-6707-474E-87E8-463A2515A5AD} = {1B74C6B5-13B9-457E-B1E5-25E484DA3C1C}
 		{891D769A-47D1-42A9-BA72-0FCF67834B55} = {8598DA28-E9FC-46E5-B197-1EEE036667EE}
 		{F4A83CC2-E51D-475E-8D5C-507634893C1C} = {8598DA28-E9FC-46E5-B197-1EEE036667EE}
+		{FD04B662-B8D3-4DE2-81F3-FAB76CF1927A} = {8598DA28-E9FC-46E5-B197-1EEE036667EE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6361DA8F-698B-4510-A050-FBE76BB3FA87}

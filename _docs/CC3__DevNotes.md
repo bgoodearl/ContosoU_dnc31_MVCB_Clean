@@ -18,6 +18,7 @@
             Added Instructors and Students controllers and views<br/>
             Added Courses controller for MVC pages, and related views<br/>
             Enabled Blazor, added demo Blazor components<br/>
+            Migrated ContosoUniversity.Components from layered app<br/>
 		</td>
     </tr>
     <tr>

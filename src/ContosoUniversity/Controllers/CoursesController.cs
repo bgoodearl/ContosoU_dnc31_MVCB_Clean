@@ -103,7 +103,7 @@ namespace ContosoUniversity.Controllers
                             }
                             else
                             {
-                                return RedirectToAction(nameof(Index));
+                                return RedirectToAction(nameof(Index), new { mode = -1 });
                             }
                         }
                     }
@@ -193,7 +193,7 @@ namespace ContosoUniversity.Controllers
                             }
                             else
                             {
-                                return RedirectToAction(nameof(Index));
+                                return RedirectToAction(nameof(Index), new { mode = -1 });
                             }
                         }
                     }
@@ -269,7 +269,7 @@ namespace ContosoUniversity.Controllers
                 else
                 {
                     Logger.LogInformation($"Courses-Delete CourseID = {course.CourseID}");
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index), new { mode = -1 });
                 }
             }
 
