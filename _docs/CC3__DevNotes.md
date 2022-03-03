@@ -27,6 +27,8 @@
             Integration test GetDepartmentsTests.CanGetDepartmentsList()<br/>
             Wired up CU.Application to CU web app,
             use MediatR query for Departments Index MVC page<br/>
+            Added MediatR query GetInstructorListItemsQuery,
+            added integration test, wired up to Instructors Index page<br/>
 		</td>
     </tr>
     <tr>

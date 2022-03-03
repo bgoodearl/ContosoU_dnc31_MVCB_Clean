@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using CU.Application.Common.Interfaces;
+//using CU.Application.Common.Interfaces;
 using CU.Application.Shared.DataRequests.SchoolItems.Queries;
 using CU.Application.Shared.Models.SchoolDtos;
-using CU.Application.Shared.ViewModels.Departments;
+//using CU.Application.Shared.ViewModels.Departments;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
