@@ -32,6 +32,9 @@
             Incorporated Jason Taylor's PaginatedListHandler.
             Added MediatR query GetCourseListItemsWithPaginationQuery,
             handler and integration test<br/>
+            Added Pager component to ContosoUniversity.Components<br/>
+            Use Pager and MediatR query GetCourseListItemsWithPaginationQuery
+            with Blazor CourseList<br/>
 		</td>
     </tr>
     <tr>

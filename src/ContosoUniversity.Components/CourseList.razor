@@ -1,47 +1,52 @@
 ﻿
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Number
-            </th>
-            <th>
-                Title
-            </th>
-            <th>
-                Credits
-            </th>
-            <th>
-                Department
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (CoursesVM.CourseList != null)
-        {
-            foreach (var item in CoursesVM.CourseList)
+<div class="course-list">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Number
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Credits
+                </th>
+                <th>
+                    Department
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (CourseItemList != null)
             {
-                <tr>
-                    <td>
-                        @item.CourseID
-                    </td>
-                    <td>
-                        @item.Title
-                    </td>
-                    <td>
-                        @item.Credits
-                    </td>
-                    <td>
-                        @item.Department
-                    </td>
-                    <td>
-                        <span @onclick="() => OnItemEdit(item)" class="btn" style="background-color:lightgray;" value="@item.CourseID">Edit</span> |
-                        <span @onclick="() => OnItemDetails(item)" class="btn" style="background-color:lightgray;" value="@item.CourseID">Details</span> |
-                        <span @onclick="() => OnItemDelete(item)" class="btn" style="background-color:lightgray;" value="@item.CourseID">Delete</span>
-                    </td>
-                </tr>
+                foreach (var item in CourseItemList)
+                {
+                    <tr>
+                        <td>
+                            @item.CourseID
+                        </td>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            @item.Credits
+                        </td>
+                        <td>
+                            @item.Department
+                        </td>
+                        <td>
+                            <span @onclick="() => OnItemEdit(item)" class="btn" style="background-color:lightgray;" value="@item.CourseID">Edit</span> |
+                            <span @onclick="() => OnItemDetails(item)" class="btn" style="background-color:lightgray;" value="@item.CourseID">Details</span> |
+                            <span @onclick="() => OnItemDelete(item)" class="btn" style="background-color:lightgray;" value="@item.CourseID">Delete</span>
+                        </td>
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <ContosoUniversity.Components.Navigation.Pager @ref="childPager" OnLoadDataFromDb="LoadDataFromDb" PagerSize=5 PageSize=8 FirstLoadPage=1 />
+</div>

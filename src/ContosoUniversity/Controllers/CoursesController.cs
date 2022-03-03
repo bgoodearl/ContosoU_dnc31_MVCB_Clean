@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CUSVMC = CU.Application.Shared.ViewModels.Courses;
+using Ardalis.GuardClauses;
 
 namespace ContosoUniversity.Controllers
 {
@@ -23,24 +24,25 @@ namespace ContosoUniversity.Controllers
             ILogger<CoursesController> logger)
             : base(httpContextAccessor)
         {
-            Logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            Guard.Against.Null(logger, nameof(logger));
+            Logger = logger;
         }
 
         #region read-only variables
         protected ILogger<CoursesController> Logger { get; }
         #endregion read-only variables
+
         [Route("~/[Controller]/{mode?}/{id?}")]
         public async Task<IActionResult> Index(int? mode, int? id)
         {
             using (ISchoolRepository repo = GetSchoolRepository())
             {
-                CUSVMC.CoursesViewModel model = new CUSVMC.CoursesViewModel
+                CUSVMC.CoursesListViewModel model = new CUSVMC.CoursesListViewModel
                 {
                     CourseID = id,
+                    CourseList = (mode != null && mode.Value < 0) ? await repo.GetCourseListItemsNoTrackingAsync() : new List<CUSVMC.CourseListItem>(),
                     ViewMode = mode.HasValue ? mode.Value : 0
                 };
-
-                model.CourseList = await repo.GetCourseListItemsNoTrackingAsync();
                 return View(model);
             }
         }

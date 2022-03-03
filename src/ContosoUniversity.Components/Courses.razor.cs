@@ -89,7 +89,6 @@ namespace ContosoUniversity.Components
                         if (args.UIMode == UIMode.List)
                         {
                             CoursesVM.ViewMode = 0; //Clear initial ViewMode from page load
-                            CoursesVM.CourseList = await dataHelper.GetCourseListNoTrackingAsync();
                             UIMode = args.UIMode;
                         }
                         else if (args.UIMode == UIMode.Create)
@@ -173,10 +172,6 @@ namespace ContosoUniversity.Components
             else
             {
                 CoursesVM = new CoursesViewModel();
-            }
-            if ((CoursesVM.CourseList == null) || (CoursesVM.CourseList.Count() == 0))
-            {
-                CoursesVM.CourseList = await dataHelper.GetCourseListNoTrackingAsync();
             }
         }
 

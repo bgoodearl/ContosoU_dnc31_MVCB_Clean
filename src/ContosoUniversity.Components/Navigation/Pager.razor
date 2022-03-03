@@ -1,0 +1,14 @@
+﻿<span class="pagination">
+    <button class="btn btn-custom" @onclick=@(async ()=>await NavigateToPage("previous"))>Prev</button>
+
+    @for (int i = startPage; i <= endPage; i++)
+    {
+        var currentPage = i;
+        <button class="btn btn-custom pagebutton @(currentPage==curPage?"btn-danger":"")" @onclick=@(async () =>await RefreshRecords(currentPage))>
+            @currentPage
+        </button>
+    }
+
+    <button class="btn btn-custom" @onclick=@(async ()=>await NavigateToPage("next"))>Next</button>
+
+</span>
