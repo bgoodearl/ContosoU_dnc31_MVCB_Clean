@@ -19,6 +19,12 @@
             Added Courses controller for MVC pages, and related views<br/>
             Enabled Blazor, added demo Blazor components<br/>
             Migrated ContosoUniversity.Components from layered app<br/>
+            Added first MediatR query - GetDepartmentListItemsQuery
+            with handler in CU.Application, and with integration test<br/>
+            Dto model, Query in CU.Application.Shared<br/>
+            Handler, AutoMapper mapping in CU.Application<br/>
+            Added DependencyInjection to CU.Application<br/>
+            Integration test GetDepartmentsTests.CanGetDepartmentsList()<br/>
 		</td>
     </tr>
     <tr>

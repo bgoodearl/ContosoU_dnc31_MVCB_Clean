@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# Do not commit files/folders starting with _Local
+_[Ll]ocal*

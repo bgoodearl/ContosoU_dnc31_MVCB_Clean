@@ -1,4 +1,5 @@
-﻿using CU.Application.Common.Interfaces;
+﻿using CU.Application;
+using CU.Application.Common.Interfaces;
 using CU.Application.Shared.Interfaces;
 using CU.Infrastructure;
 using FluentAssertions;
@@ -89,6 +90,7 @@ namespace CU.ApplicationIntegrationTests
         {
             if (configuration != null)
             {
+                services.AddApplicationLayer();
                 services.AddInfrastructure(configuration);
             }
         }
