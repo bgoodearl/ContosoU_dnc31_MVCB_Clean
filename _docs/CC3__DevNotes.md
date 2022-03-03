@@ -6,6 +6,13 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>3/3/2022</td><td>bg</td>
+		<td>
+            Added SchoolRepository and related test<br/>
+            Added SchoolViewDataRepository and related test<br/>
+		</td>
+    </tr>
+    <tr>
         <td>3/2/2022</td><td>bg</td>
 		<td>
             Started with CU.SharedKernel<br/>

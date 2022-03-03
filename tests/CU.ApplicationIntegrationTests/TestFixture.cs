@@ -1,4 +1,5 @@
 ﻿using CU.Application.Common.Interfaces;
+using CU.Application.Shared.Interfaces;
 using CU.Infrastructure;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
@@ -47,6 +48,34 @@ namespace CU.ApplicationIntegrationTests
             }
 
             throw new InvalidOperationException("GetISchoolDbContext - invalid configuration");
+        }
+
+        internal ISchoolRepositoryFactory GetSchoolRepositoryFactory(ITestOutputHelper testOutputHelper)
+        {
+            testOutputHelper.Should().NotBeNull();
+
+            ISchoolRepositoryFactory schoolRepositoryFactory = GetService<ISchoolRepositoryFactory>(testOutputHelper);
+            schoolRepositoryFactory.Should().NotBeNull();
+            if (schoolRepositoryFactory != null)
+            {
+                return schoolRepositoryFactory;
+            }
+
+            throw new InvalidOperationException("GetSchoolRepositoryFactory - invalid configuration");
+        }
+
+        internal ISchoolViewDataRepositoryFactory GetSchoolViewDataRepositoryFactory(ITestOutputHelper testOutputHelper)
+        {
+            testOutputHelper.Should().NotBeNull();
+
+            ISchoolViewDataRepositoryFactory schoolViewDataRepositoryFactory = GetService<ISchoolViewDataRepositoryFactory>(testOutputHelper);
+            schoolViewDataRepositoryFactory.Should().NotBeNull();
+            if (schoolViewDataRepositoryFactory != null)
+            {
+                return schoolViewDataRepositoryFactory;
+            }
+
+            throw new InvalidOperationException("GetSchoolViewDataRepositoryFactory - invalid configuration");
         }
 
         #region TestBed
