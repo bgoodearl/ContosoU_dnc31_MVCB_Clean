@@ -29,6 +29,9 @@
             use MediatR query for Departments Index MVC page<br/>
             Added MediatR query GetInstructorListItemsQuery,
             added integration test, wired up to Instructors Index page<br/>
+            Incorporated Jason Taylor's PaginatedListHandler.
+            Added MediatR query GetCourseListItemsWithPaginationQuery,
+            handler and integration test<br/>
 		</td>
     </tr>
     <tr>

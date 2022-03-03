@@ -18,7 +18,7 @@ namespace CU.ApplicationIntegrationTests.ApplicationTests
         }
 
         [Fact]
-        public async Task CanInstructorsList()
+        public async Task CanGetInstructorsList()
         {
             GetInstructorListItemsQuery query = new GetInstructorListItemsQuery();
             List<InstructorListItem> instructors = await SendAsync(query);

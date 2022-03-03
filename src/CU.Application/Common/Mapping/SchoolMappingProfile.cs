@@ -9,6 +9,13 @@ namespace CU.Application.Common.Mapping
     {
         public SchoolMappingProfile()
         {
+            CreateMap<Course, CourseListItemDto>()
+                .ForMember(
+                    d => d.Department,
+                    opt => opt.MapFrom(x =>
+                        x.Department != null ? x.Department.Name : null))
+            ;
+
             CreateMap<Department, DepartmentListItemDto>()
                 .ForMember(
                     d => d.Administrator,
