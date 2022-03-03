@@ -15,6 +15,7 @@
             Migrated CUControllerBase from layered app<br/>
             Added logging with NLog<br/>
             Added Departments controller and view<br/>
+            Added Instructors and Students controllers and views<br/>
 		</td>
     </tr>
     <tr>
