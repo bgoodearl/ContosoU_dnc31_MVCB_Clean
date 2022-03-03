@@ -45,6 +45,7 @@ to `...\src\tests\CU.ApplicationIntegrationTests` and modify connection string f
 
 ## Resource links
 
+[Blazor Resource Links](./_docs/CC3_BlazorResources.md)<br/>
 [Clean Architecture and related Resource Links](./_docs/CC3_CleanResources.md)<br/>
 [EF Resources](./_docs/CC3_EFResources.md)<br/>
 [Logging Resources](./_docs/CC3_Logging.md)<br/>
