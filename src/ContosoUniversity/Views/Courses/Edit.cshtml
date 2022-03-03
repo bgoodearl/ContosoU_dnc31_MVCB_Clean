@@ -1,0 +1,29 @@
+﻿@using ContosoUniversity.ViewModels.Courses
+@model CourseEditViewModel
+
+@{
+    ViewData["Title"] = "Create Course";
+}
+
+<h1 class="h2">Edit Course</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            @{await Html.RenderPartialAsync("Partial/CourseEditPartial", Model);}
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @*<a asp-action="Index" asp-route-mode="-1">Back to List</a>*@
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
