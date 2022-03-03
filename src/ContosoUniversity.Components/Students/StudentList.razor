@@ -1,0 +1,40 @@
+﻿
+<div class="course-list">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Enrollment Date
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (StudentItemList != null)
+            {
+                foreach (var item in StudentItemList)
+                {
+                    <tr>
+                        <td>
+                            @item.FullName
+                        </td>
+                        <td>
+                            @item.EnrollmentDate
+                        </td>
+                        <td>
+                            @*<span @onclick="() => OnItemEdit(item)" class="btn" style="background-color:lightgray;" value="@item.StudentID">Edit</span> |
+                            <span @onclick="() => OnItemDetails(item)" class="btn" style="background-color:lightgray;" value="@item.StudentID">Details</span> |
+                            <span @onclick="() => OnItemDelete(item)" class="btn" style="background-color:lightgray;" value="@item.StudentID">Delete</span>*@
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <ContosoUniversity.Components.Navigation.Pager @ref="childPager" OnLoadDataFromDb="LoadDataFromDb" PagerSize=3 PageSize=5 FirstLoadPage=1 />
+</div>

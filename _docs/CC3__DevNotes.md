@@ -35,6 +35,9 @@
             Added Pager component to ContosoUniversity.Components<br/>
             Use Pager and MediatR query GetCourseListItemsWithPaginationQuery
             with Blazor CourseList<br/>
+            Added initial Student MediatR queries and tests<br/>
+            Added Students Blazor component, use it as default
+            view on Students Index page<br/>
 		</td>
     </tr>
     <tr>

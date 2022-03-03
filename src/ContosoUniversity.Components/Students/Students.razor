@@ -1,0 +1,25 @@
+﻿@using static CU.Application.Shared.CommonDefs
+
+@if (UIMode == UIMode.List)
+{
+    <h1 class="h2">Students - Blazor</h1>
+    @*<div>
+            <button @onclick="() => OnCreateStudent()" class="btn" style="background-color:lightgray;">Create Student</button>
+        </div>*@
+}
+else
+{
+    <h1 class="h2">Students? - Blazor</h1>
+}
+@if (!string.IsNullOrWhiteSpace(Message))
+{
+    <p>@Message</p>
+}
+@if (UIMode == UIMode.List)
+{
+    <StudentList StudentsVM=@StudentsVM StudentAction="ca => StudentAction(ca)" />
+}
+else
+{
+    <p>??</p>
+}
