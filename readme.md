@@ -31,6 +31,15 @@ Create your local database and use the SQL script:<br/>
 `...\SqlScripts\Schema\Schema1.sql`<br/>
 to create the tables.<br/>
 
+Copy `...\_ConfigSource\src\ContosoUniversity\appsettings.Development_user_xxxx.json`
+to `...\src\ContosoUniversity` replacing "xxxx" in the file name with the 
+username of the account from which you are running Visual Studio, and
+update the paths in the file to match your solution path.  Also,
+and correct connection string for your environment.
+
+Update paths for `internalLogFile` and `var_logdir`
+in `appsettings.Development_user_...` after you copy and rename it.
+
 Copy `...\_ConfigSource\src\tests\CU.ApplicationIntegrationTests\appsettings.LocalTesting.json`
 to `...\src\tests\CU.ApplicationIntegrationTests` and modify connection string for your environment.
 
@@ -38,6 +47,7 @@ to `...\src\tests\CU.ApplicationIntegrationTests` and modify connection string f
 
 [Clean Architecture and related Resource Links](./_docs/CC3_CleanResources.md)<br/>
 [EF Resources](./_docs/CC3_EFResources.md)<br/>
+[Logging Resources](./_docs/CC3_Logging.md)<br/>
 [Other Resources](./_docs/CC3_Resources.md)<br/>
 [Tools](./_docs/CC3_Tools.md)<br/>
 

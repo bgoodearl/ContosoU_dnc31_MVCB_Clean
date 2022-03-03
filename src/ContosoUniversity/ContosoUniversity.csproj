@@ -4,4 +4,19 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.22" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <ProjectReference Include="..\ContosoUniversity.Models\ContosoUniversity.Models.csproj" />
+    <ProjectReference Include="..\CU.Application.Common\CU.Application.Common.csproj" />
+    <ProjectReference Include="..\CU.Application.Shared\CU.Application.Shared.csproj" />
+    <ProjectReference Include="..\CU.Application\CU.Application.csproj" />
+    <ProjectReference Include="..\CU.Infrastructure\CU.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
