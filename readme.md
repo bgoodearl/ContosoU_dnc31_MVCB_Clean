@@ -63,3 +63,4 @@ CU.Application.Shared           | Interfaces and Classes shared among multiple C
 CU.Infrastructure               | Infrastructure, including Entity Framework DbContext, Repositories, and Migrations
 CU.SharedKernel                 | Classes shared among multiple app projects
 CU.ApplicationIntegrationTests  | 
+Demo.Components                 | Demo Blazor components

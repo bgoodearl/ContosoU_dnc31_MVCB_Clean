@@ -17,6 +17,7 @@
             Added Departments controller and view<br/>
             Added Instructors and Students controllers and views<br/>
             Added Courses controller for MVC pages, and related views<br/>
+            Enabled Blazor, added demo Blazor components<br/>
 		</td>
     </tr>
     <tr>

@@ -27,7 +27,9 @@ namespace ContosoUniversity
         {
             services.AddControllersWithViews()
                 .AddNewtonsoftJson();
-
+            services.AddServerSideBlazor();
+            services.AddRazorPages()
+                .AddRazorRuntimeCompilation();
             //Inject HttpContextAccessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
@@ -60,6 +62,7 @@ namespace ContosoUniversity
                 //endpoints.MapControllerRoute(
                 //    name: "default",
                 //    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapBlazorHub();
             });
         }
     }
