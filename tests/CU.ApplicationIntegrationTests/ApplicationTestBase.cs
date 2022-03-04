@@ -1,9 +1,12 @@
-﻿using FluentAssertions;
+﻿using CU.Application.Data.Common.Interfaces;
+using FluentAssertions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
+using CIP = CU.Infrastructure.Persistence;
+using CM = ContosoUniversity.Models;
 
 namespace CU.ApplicationIntegrationTests
 {
@@ -12,6 +15,17 @@ namespace CU.ApplicationIntegrationTests
         public ApplicationTestBase(ITestOutputHelper testOutputHelper, TestFixture fixture)
             : base (testOutputHelper, fixture)
         {
+        }
+
+        protected async Task<CM.Student> GetStudentAsync(params object[] keyValues)
+        {
+            using (var scope = _fixture.GetServiceScopeFactory(_testOutputHelper).CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ISchoolDbContext>();
+                CIP.SchoolDbContext schoolDbContext = context as CIP.SchoolDbContext;
+                schoolDbContext.Should().NotBeNull();
+                return await schoolDbContext.Students.FindAsync(keyValues);
+            }
         }
 
         protected async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request)

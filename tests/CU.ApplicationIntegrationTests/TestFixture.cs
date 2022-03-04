@@ -24,6 +24,27 @@ namespace CU.ApplicationIntegrationTests
             ++fixtureInstanceCount;
         }
 
+        #region Other Factories
+
+        internal IServiceScopeFactory GetServiceScopeFactory(ITestOutputHelper testOutputHelper)
+        {
+            testOutputHelper.Should().NotBeNull();
+
+            IServiceScopeFactory? scopeFactory = GetService<IServiceScopeFactory>(testOutputHelper);
+            scopeFactory.Should().NotBeNull();
+
+            if (scopeFactory != null)
+            {
+                return scopeFactory;
+            }
+            throw new InvalidOperationException("GetServiceScopeFactory - invalid configuration");
+        }
+
+        #endregion Other Factories
+
+
+        #region School Data Factories
+
         internal async Task<ISchoolDbContext> GetISchoolDbContext(ITestOutputHelper testOutputHelper)
         {
             testOutputHelper.Should().NotBeNull();
@@ -77,6 +98,8 @@ namespace CU.ApplicationIntegrationTests
 
             throw new InvalidOperationException("GetSchoolViewDataRepositoryFactory - invalid configuration");
         }
+
+        #endregion School Data Factories
 
         #region TestBed
 
