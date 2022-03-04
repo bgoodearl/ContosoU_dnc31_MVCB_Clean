@@ -1,4 +1,5 @@
-﻿using CU.SharedKernel.Base;
+﻿using Ardalis.GuardClauses;
+using CU.SharedKernel.Base;
 //using CU.SharedKernel.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,21 @@ namespace ContosoUniversity.Models
 {
     public class Student : EntityBaseT<int> //, IHasDomainEvents //TODO: Restore when Domain Events are figured out
     {
+        private Student()
+        {
+
+        }
+
+        public Student(string lastName, string firstMidName, DateTime enrollmentDate)
+        {
+            Guard.Against.NullOrWhiteSpace(lastName, nameof(lastName));
+            Guard.Against.NullOrWhiteSpace(firstMidName, nameof(firstMidName));
+            Guard.Against.OutOfSQLDateRange(enrollmentDate, nameof(enrollmentDate));
+            LastName = lastName;
+            FirstMidName = firstMidName;
+            EnrollmentDate = enrollmentDate;
+        }
+
         public int ID { get; set; }
 
         [NotMapped]

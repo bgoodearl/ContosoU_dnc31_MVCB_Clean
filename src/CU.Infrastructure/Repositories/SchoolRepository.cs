@@ -34,12 +34,11 @@ namespace CU.Infrastructure.Repositories
                 CourseID = course.CourseID
             };
 
-            Course persistentCourse = new Course
+            Department department = await SchoolDbContext.Departments.Where(d => d.DepartmentID == course.DepartmentID).SingleOrDefaultAsync();
+
+            Course persistentCourse = new Course(course.CourseID, course.Title, department)
             {
-                CourseID = course.CourseID,
                 Credits = course.Credits,
-                DepartmentID = course.DepartmentID,
-                Title = course.Title
             };
             SchoolDbContext.Courses.Add(persistentCourse);
             result.ChangeCount = await SaveChangesAsync();

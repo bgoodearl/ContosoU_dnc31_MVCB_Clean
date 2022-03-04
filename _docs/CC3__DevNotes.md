@@ -14,6 +14,11 @@
             Moved ISchoolDbContext and ISchoolDbContextFactory from Application
             to CU.Application.Data.Common so Infrastructure doesn't depend on Application<br/>
             Added unit test for MediatR requests having handlers<br/>
+            Updated persistent models with private default constructors and
+            public constructors with parameters as in .NET 6 implementation,
+            updated Seeding<br/>
+            Rebuilt migrations, updated Schema1 SQL script, tweaked
+            data seeding to follow code from .NET 6 version of project<br/>
 		</td>
     </tr>
     <tr>

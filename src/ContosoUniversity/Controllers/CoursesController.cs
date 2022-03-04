@@ -311,6 +311,7 @@ namespace ContosoUniversity.Controllers
                         || (ctx.Courses.Count() == 0) || (ctx.Enrollments.Count() == 0))
                     {
                         int saveChangeCount = await ctx.SeedInitialDataAsync();
+                        Logger.LogInformation($"Seeded database with {saveChangeCount} changes");
                     }
                 }
                 return RedirectToAction("Index");

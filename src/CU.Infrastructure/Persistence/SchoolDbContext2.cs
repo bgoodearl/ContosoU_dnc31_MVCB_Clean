@@ -19,6 +19,12 @@ namespace CU.Infrastructure.Persistence
             modelBuilder.Entity<Instructor>()
                 .HasOptional(i => i.OfficeAssignment)
                 .WithRequired(o => o.Instructor);
+
+            modelBuilder.Entity<OfficeAssignment>()
+                .HasKey(e => e.InstructorID)
+                .ToTable("OfficeAssignment")
+                .HasRequired(oa => oa.Instructor).WithOptional(i => i.OfficeAssignment);
+
         }
     }
 }

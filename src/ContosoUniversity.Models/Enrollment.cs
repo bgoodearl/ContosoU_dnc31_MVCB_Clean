@@ -1,4 +1,5 @@
-﻿using CU.SharedKernel.Base;
+﻿using Ardalis.GuardClauses;
+using CU.SharedKernel.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,6 +12,24 @@ namespace ContosoUniversity.Models
 
     public class Enrollment : EntityBaseT<int>
     {
+        private Enrollment()
+        {
+
+        }
+
+        public Enrollment(Course course, Student student)
+        {
+            Guard.Against.Null(course, nameof(course));
+            Guard.Against.Zero(course.CourseID, nameof(course.CourseID));
+            Guard.Against.Null(student, nameof(student));
+            Guard.Against.Zero(student.ID, nameof(student.ID));
+            Course = course;
+            CourseID = course.CourseID;
+            Student = student;
+            StudentID = student.ID;
+        }
+
+
         public int EnrollmentID { get; set; }
 
         [NotMapped]

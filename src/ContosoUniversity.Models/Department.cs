@@ -1,4 +1,5 @@
-﻿using CU.SharedKernel.Base;
+﻿using Ardalis.GuardClauses;
+using CU.SharedKernel.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,6 +9,21 @@ namespace ContosoUniversity.Models
 {
     public class Department : EntityBaseT<int>
     {
+        private Department()
+        {
+            RowVersion = new byte[] { 0, 0, 0, 0 };
+        }
+
+        public Department(string name, decimal budget, DateTime startDate)
+        {
+            Guard.Against.NullOrWhiteSpace(name, nameof(name));
+            Guard.Against.OutOfSQLDateRange(startDate, nameof(startDate));
+            Name = name;
+            Budget = budget;
+            RowVersion = new byte[] { 0, 0, 0, 0 };
+            StartDate = startDate;
+        }
+
         public int DepartmentID { get; set; }
 
         [NotMapped]

@@ -1,4 +1,4 @@
-﻿namespace CU.Infrastructure.Persistence.Migrations
+﻿namespace CU.Infrastructure.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

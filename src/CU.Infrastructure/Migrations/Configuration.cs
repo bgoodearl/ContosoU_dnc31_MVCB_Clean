@@ -1,4 +1,4 @@
-﻿namespace ContosoUniversity.DAL.Migrations
+﻿namespace CU.Infrastructure.Migrations
 {
     using System;
     using System.Data.Entity;
