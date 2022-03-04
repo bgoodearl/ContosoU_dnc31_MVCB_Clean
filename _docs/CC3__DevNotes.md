@@ -6,6 +6,17 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>3/4/2022</td><td>bg</td>
+		<td>
+            Minor re-org:
+            Removed DomainEvent artifacts - deferring implementation of DomainEvent
+            until after a rexamination of the topic<br/>
+            Moved ISchoolDbContext and ISchoolDbContextFactory from Application
+            to CU.Application.Data.Common so Infrastructure doesn't depend on Application<br/>
+            Added unit test for MediatR requests having handlers<br/>
+		</td>
+    </tr>
+    <tr>
         <td>3/3/2022</td><td>bg</td>
 		<td>
             Added SchoolRepository and related test<br/>

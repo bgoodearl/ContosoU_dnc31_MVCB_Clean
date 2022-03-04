@@ -1,5 +1,4 @@
 ﻿using CU.SharedKernel.Base;
-using CU.SharedKernel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
-    public class Department : EntityBaseT<int>, IHasDomainEvents
+    public class Department : EntityBaseT<int>
     {
         public int DepartmentID { get; set; }
 

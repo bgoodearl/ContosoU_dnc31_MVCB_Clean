@@ -1,5 +1,5 @@
 ﻿
-namespace CU.Application.Common.Interfaces
+namespace CU.Application.Data.Common.Interfaces
 {
     public interface ISchoolDbContextFactory
     {

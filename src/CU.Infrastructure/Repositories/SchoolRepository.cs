@@ -6,6 +6,7 @@ using CU.Application.Shared.ViewModels.Courses;
 using CU.Application.Shared.ViewModels.Departments;
 using CU.Application.Shared.ViewModels.Instructors;
 using CU.Application.Shared.ViewModels.Students;
+using CU.Application.Data.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

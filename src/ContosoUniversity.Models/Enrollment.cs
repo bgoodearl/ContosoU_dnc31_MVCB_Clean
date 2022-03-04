@@ -1,5 +1,4 @@
 ﻿using CU.SharedKernel.Base;
-using CU.SharedKernel.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +9,7 @@ namespace ContosoUniversity.Models
         A, B, C, D, F
     }
 
-    public class Enrollment : EntityBaseT<int>, IHasDomainEvents
+    public class Enrollment : EntityBaseT<int>
     {
         public int EnrollmentID { get; set; }
 

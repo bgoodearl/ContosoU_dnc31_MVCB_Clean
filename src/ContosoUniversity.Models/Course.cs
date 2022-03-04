@@ -1,12 +1,11 @@
 ﻿using CU.SharedKernel.Base;
-using CU.SharedKernel.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
-    public class Course : EntityBaseT<int>, IHasDomainEvents
+    public class Course : EntityBaseT<int>
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Display(Name = "Number")]

@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CU.Application.Common.Interfaces
+namespace CU.Application.Data.Common.Interfaces
 {
     public interface ISchoolDbContext : IDisposable
     {

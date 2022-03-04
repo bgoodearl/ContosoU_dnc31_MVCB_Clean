@@ -1,5 +1,6 @@
 ﻿using CU.Application;
 using CU.Application.Common.Interfaces;
+using CU.Application.Data.Common.Interfaces;
 using CU.Application.Shared.Interfaces;
 using CU.Infrastructure;
 using FluentAssertions;

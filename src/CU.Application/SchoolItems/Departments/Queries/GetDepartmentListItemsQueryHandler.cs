@@ -1,7 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using AutoMapper;
 using MediatR;
-using CU.Application.Common.Interfaces;
+using CU.Application.Data.Common.Interfaces;
 using CU.Application.Shared.DataRequests.SchoolItems.Queries;
 using CU.Application.Shared.Models.SchoolDtos;
 using AutoMapper.QueryableExtensions;

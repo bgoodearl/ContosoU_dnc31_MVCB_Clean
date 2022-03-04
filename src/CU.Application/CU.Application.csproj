@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ContosoUniversity.Models\ContosoUniversity.Models.csproj" />
     <ProjectReference Include="..\CU.Application.Common\CU.Application.Common.csproj" />
+    <ProjectReference Include="..\CU.Application.Data.Common\CU.Application.Data.Common.csproj" />
     <ProjectReference Include="..\CU.Application.Shared\CU.Application.Shared.csproj" />
   </ItemGroup>
 

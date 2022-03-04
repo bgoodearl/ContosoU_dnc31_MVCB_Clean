@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using CU.Application.Common.Interfaces;
+using CU.Application.Data.Common.Interfaces;
 using FluentAssertions;
 using Xunit;
 using Xunit.Abstractions;

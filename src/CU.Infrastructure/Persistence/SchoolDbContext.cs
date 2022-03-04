@@ -1,4 +1,4 @@
-﻿using CU.Application.Common.Interfaces;
+﻿using CU.Application.Data.Common.Interfaces;
 using ContosoUniversity.Models;
 using System.Data.Entity;
 using System.Threading;
