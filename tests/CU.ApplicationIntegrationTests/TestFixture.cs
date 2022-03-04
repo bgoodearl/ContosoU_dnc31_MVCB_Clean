@@ -38,12 +38,10 @@ namespace CU.ApplicationIntegrationTests
                 {
                     if (!FixtureDbInitialized)
                     {
+                        testOutputHelper.WriteLine("About to attempt to seed database");
                         int saveCount = await cuContext.SeedInitialDataAsync();
                         FixtureDbInitialized = true;
-                        if (testOutputHelper != null)
-                        {
-                            testOutputHelper.WriteLine($"SeedInitialDataAsync saved {saveCount} changes, fixtureInstanceCount = {fixtureInstanceCount}");
-                        }
+                        testOutputHelper.WriteLine($"SeedInitialDataAsync saved {saveCount} changes, fixtureInstanceCount = {fixtureInstanceCount}");
                     }
                     return cuContext;
                 }

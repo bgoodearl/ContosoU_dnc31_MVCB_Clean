@@ -116,17 +116,24 @@ namespace CU.Infrastructure.Persistence
             }
             if (haveCourses && haveInstructors)
             {
-                AddInstructorToCourse(context, "Chemistry", "Kapoor");
-                AddInstructorToCourse(context, "Chemistry", "Harui");
-                AddInstructorToCourse(context, "Microeconomics", "Zheng");
-                AddInstructorToCourse(context, "Macroeconomics", "Zheng");
+                int coursesWithInstructorsCount = context.Courses
+                    .Where(c => c.Instructors.Count() > 0)
+                    .Count();
 
-                AddInstructorToCourse(context, "Calculus", "Fakhouri");
-                AddInstructorToCourse(context, "Trigonometry", "Harui");
-                AddInstructorToCourse(context, "Composition", "Abercrombie");
-                AddInstructorToCourse(context, "Literature", "Abercrombie");
+                if (coursesWithInstructorsCount == 0)
+                {
+                    AddInstructorToCourse(context, "Chemistry", "Kapoor");
+                    AddInstructorToCourse(context, "Chemistry", "Harui");
+                    AddInstructorToCourse(context, "Microeconomics", "Zheng");
+                    AddInstructorToCourse(context, "Macroeconomics", "Zheng");
 
-                saveChangeCount += await context.SaveChangesAsync(new System.Threading.CancellationToken());
+                    AddInstructorToCourse(context, "Calculus", "Fakhouri");
+                    AddInstructorToCourse(context, "Trigonometry", "Harui");
+                    AddInstructorToCourse(context, "Composition", "Abercrombie");
+                    AddInstructorToCourse(context, "Literature", "Abercrombie");
+
+                    saveChangeCount += await context.SaveChangesAsync(new System.Threading.CancellationToken());
+                }
             }
 
             if (haveCourses && haveStudents)
