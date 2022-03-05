@@ -2,7 +2,6 @@
 using ContosoUniversity.Components.Navigation;
 using CU.Application.Shared.Common.Models;
 using CU.Application.Shared.DataRequests.SchoolItems.Queries;
-using CU.Application.Shared.Models.SchoolDtos;
 using CU.Application.Shared.ViewModels.Students;
 using MediatR;
 using Microsoft.AspNetCore.Components;

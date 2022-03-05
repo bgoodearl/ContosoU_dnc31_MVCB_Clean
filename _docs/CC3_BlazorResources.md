@@ -26,7 +26,10 @@
 ### Blazor forms and validation
 
 [ASP.NET Core Blazor forms and validation](https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-3.1)
-(c. Nov 2021)
+(c. Feb 2022)
+
+[Integrating FluentValidation with Blazor](https://blog.stevensanderson.com/2019/09/04/blazor-fluentvalidation/)
+(c. Sep 2019)
 
 ## Blazor Demos
 

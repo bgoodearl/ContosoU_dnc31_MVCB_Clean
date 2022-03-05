@@ -10,6 +10,8 @@
 		<td>
             Tweaked use of ISchoolDbContextFactory<br/>
             Added test CanGetCoursesWithInstructorsAsync() (from .NET 6 version)<br/>
+            Added UpdateStudentItemCommand, handler, validator, test<br/>
+            Added StudentEdit component<br/>
 		</td>
     </tr>
     <tr>
