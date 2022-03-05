@@ -9,6 +9,7 @@
         <td>3/5/2022</td><td>bg</td>
 		<td>
             Tweaked use of ISchoolDbContextFactory<br/>
+            Added test CanGetCoursesWithInstructorsAsync() (from .NET 6 version)<br/>
 		</td>
     </tr>
     <tr>
