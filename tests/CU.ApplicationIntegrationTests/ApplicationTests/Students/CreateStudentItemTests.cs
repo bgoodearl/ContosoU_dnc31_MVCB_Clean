@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 using CM = ContosoUniversity.Models;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CU.ApplicationIntegrationTests.ApplicationTests.Students
 {
@@ -36,9 +37,9 @@ namespace CU.ApplicationIntegrationTests.ApplicationTests.Students
             _testOutputHelper.WriteLine("Errors:");
             foreach(KeyValuePair<string, string[]> kv in validationException.Errors)
             {
-                _testOutputHelper.WriteLine($"{kv.Key}: [{kv.Value[0]} (1 of {kv.Value.Length})]");
+                _testOutputHelper.WriteLine($"{kv.Key}: [{kv.Value[0]} (val 1 of {kv.Value.Length})]");
             }
-            validationException.Errors.Count.Should().Be(2);
+            validationException.Errors.Count.Should().Be(3);
         }
 
         [SkippableFact]
@@ -47,8 +48,11 @@ namespace CU.ApplicationIntegrationTests.ApplicationTests.Students
             const string lastNameSmith = "Smith";
             const string firstNameStartsWithJohn = "John";
             CM.Student latestJohnSmith = null;
-            using (ISchoolDbContext cuContext = await _fixture.GetISchoolDbContext(_testOutputHelper))
+            using (var scope = _fixture.GetServiceScopeFactory(_testOutputHelper).CreateScope())
             {
+                ISchoolDbContext cuContext = scope.ServiceProvider.GetRequiredService<ISchoolDbContext>();
+                cuContext.Should().NotBeNull();
+
                 latestJohnSmith = await cuContext.Students
                     .Where(s => s.LastName == lastNameSmith && s.FirstMidName.StartsWith(firstNameStartsWithJohn))
                     .OrderByDescending(s => s.FirstMidName)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CU.Application.Data.Common.Interfaces;
 using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using Xunit.Abstractions;
 using CM = ContosoUniversity.Models;
@@ -24,8 +25,9 @@ namespace CU.ApplicationIntegrationTests.DbContextTests
         {
             int maxCourseCount = 5;
 
-            using (ISchoolDbContext cuContext = await _fixture.GetISchoolDbContext(_testOutputHelper))
+            using (var scope = _fixture.GetServiceScopeFactory(_testOutputHelper).CreateScope())
             {
+                ISchoolDbContext cuContext = scope.ServiceProvider.GetRequiredService<ISchoolDbContext>();
                 cuContext.Should().NotBeNull();
 
                 List<CM.Course> courses = await cuContext.Courses

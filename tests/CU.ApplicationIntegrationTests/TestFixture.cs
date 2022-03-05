@@ -1,6 +1,6 @@
 ﻿using CU.Application;
 using CU.Application.Common.Interfaces;
-using CU.Application.Data.Common.Interfaces;
+//using CU.Application.Data.Common.Interfaces;
 using CU.Application.Shared.Interfaces;
 using CU.Infrastructure;
 using FluentAssertions;
@@ -30,46 +30,16 @@ namespace CU.ApplicationIntegrationTests
         {
             testOutputHelper.Should().NotBeNull();
 
-            IServiceScopeFactory? scopeFactory = GetService<IServiceScopeFactory>(testOutputHelper);
+            IServiceScopeFactory scopeFactory = GetService<IServiceScopeFactory>(testOutputHelper);
             scopeFactory.Should().NotBeNull();
 
-            if (scopeFactory != null)
-            {
-                return scopeFactory;
-            }
-            throw new InvalidOperationException("GetServiceScopeFactory - invalid configuration");
+            return scopeFactory;
         }
 
         #endregion Other Factories
 
 
         #region School Data Factories
-
-        internal async Task<ISchoolDbContext> GetISchoolDbContext(ITestOutputHelper testOutputHelper)
-        {
-            testOutputHelper.Should().NotBeNull();
-
-            ISchoolDbContextFactory schoolDbContextFactory = GetService<ISchoolDbContextFactory>(testOutputHelper);
-            schoolDbContextFactory.Should().NotBeNull();
-            if (schoolDbContextFactory != null)
-            {
-                ISchoolDbContext cuContext = schoolDbContextFactory.GetSchoolDbContext();
-                cuContext.Should().NotBeNull();
-                if (cuContext != null)
-                {
-                    if (!FixtureDbInitialized)
-                    {
-                        testOutputHelper.WriteLine("About to attempt to seed database");
-                        int saveCount = await cuContext.SeedInitialDataAsync();
-                        FixtureDbInitialized = true;
-                        testOutputHelper.WriteLine($"SeedInitialDataAsync saved {saveCount} changes, fixtureInstanceCount = {fixtureInstanceCount}");
-                    }
-                    return cuContext;
-                }
-            }
-
-            throw new InvalidOperationException("GetISchoolDbContext - invalid configuration");
-        }
 
         internal ISchoolRepositoryFactory GetSchoolRepositoryFactory(ITestOutputHelper testOutputHelper)
         {

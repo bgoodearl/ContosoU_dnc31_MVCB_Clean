@@ -305,7 +305,8 @@ namespace ContosoUniversity.Controllers
         {
             try
             {
-                using (ISchoolDbContext ctx = GetSchoolDbContext())
+                //using (ISchoolDbContext ctx = GetSchoolDbContext())
+                ISchoolDbContext ctx = SchoolDbContext;
                 {
                     if ((ctx.Students.Count() == 0) || (ctx.Instructors.Count() == 0)
                         || (ctx.Courses.Count() == 0) || (ctx.Enrollments.Count() == 0))

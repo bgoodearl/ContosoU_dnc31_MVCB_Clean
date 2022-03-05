@@ -6,6 +6,12 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>3/5/2022</td><td>bg</td>
+		<td>
+            Tweaked use of ISchoolDbContextFactory<br/>
+		</td>
+    </tr>
+    <tr>
         <td>3/4/2022</td><td>bg</td>
 		<td>
             Minor re-org:

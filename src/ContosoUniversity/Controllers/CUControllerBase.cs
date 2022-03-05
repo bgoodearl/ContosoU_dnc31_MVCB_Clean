@@ -18,10 +18,12 @@ namespace ContosoUniversity.Controllers
             HttpContextAccessor = httpContextAccessor;
             Guard.Against.Null(httpContextAccessor.HttpContext, nameof(httpContextAccessor.HttpContext));
             Guard.Against.Null(httpContextAccessor.HttpContext.RequestServices, nameof(httpContextAccessor.HttpContext.RequestServices));
-            SchoolDbContextFactory = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISchoolDbContextFactory>();
+            //SchoolDbContextFactory = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISchoolDbContextFactory>();
             SchoolRepositoryFactory = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISchoolRepositoryFactory>();
             SchoolViewDataRepositoryFactory = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISchoolViewDataRepositoryFactory>();
             Mediator = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISender>();
+            SchoolDbContext = httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISchoolDbContext>();
+            Guard.Against.Null(SchoolDbContext, nameof(SchoolDbContext));
         }
 
         #region Read Only variables
@@ -40,11 +42,12 @@ namespace ContosoUniversity.Controllers
             return SchoolViewDataRepositoryFactory.GetViewDataRepository();
         }
 
-        ISchoolDbContextFactory SchoolDbContextFactory { get; }
-        protected ISchoolDbContext GetSchoolDbContext()
-        {
-            return SchoolDbContextFactory.GetSchoolDbContext();
-        }
+        //ISchoolDbContextFactory SchoolDbContextFactory { get; }
+        //protected ISchoolDbContext GetSchoolDbContext()
+        //{
+        //    //return SchoolDbContextFactory.GetSchoolDbContext();
+        //}
+        protected ISchoolDbContext SchoolDbContext { get; }
 
         protected ISchoolRepositoryFactory SchoolRepositoryFactory { get; }
         protected ISchoolRepository GetSchoolRepository()
