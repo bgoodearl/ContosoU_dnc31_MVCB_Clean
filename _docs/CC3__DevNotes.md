@@ -15,6 +15,9 @@
             Added GetInstructorListItemsWithPaginationQuery, test<br/>
             Added razor components: Instructors, InstructorList<br/>
             Updated Instructors Index MVC page to use razor components by default<br/>
+            Refactored Components - share SchoolItemEventArgs, SchoolItemViewModel,
+            Moved Course components to Courses folder<br/>
+            Fixed problem with saving changed DepartmentID when saving Course edit<br/>
 		</td>
     </tr>
     <tr>

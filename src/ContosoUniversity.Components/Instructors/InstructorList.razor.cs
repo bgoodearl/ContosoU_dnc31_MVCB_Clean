@@ -2,6 +2,7 @@
 using ContosoUniversity.Components.Navigation;
 using CU.Application.Shared.Common.Models;
 using CU.Application.Shared.DataRequests.SchoolItems.Queries;
+using CU.Application.Shared.ViewModels;
 using CU.Application.Shared.ViewModels.Instructors;
 using MediatR;
 using Microsoft.AspNetCore.Components;
@@ -19,9 +20,9 @@ namespace ContosoUniversity.Components.Instructors
 
         [Inject] ILogger<InstructorList> Logger { get; set; }
 
-        [Parameter] public InstructorsViewModel InstructorsVM { get; set; }
+        [Parameter] public SchoolItemViewModel InstructorsVM { get; set; }
 
-        [Parameter] public EventCallback<InstructorEventArgs> InstructorAction { get; set; }
+        [Parameter] public EventCallback<SchoolItemEventArgs> InstructorAction { get; set; }
 
         protected bool Loading { get; set; }
 

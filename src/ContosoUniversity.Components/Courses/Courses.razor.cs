@@ -1,4 +1,5 @@
 ﻿using CU.Application.Shared.Interfaces;
+using CU.Application.Shared.ViewModels;
 using CU.Application.Shared.ViewModels.Courses;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
@@ -7,12 +8,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using static CU.Application.Shared.CommonDefs;
 
-namespace ContosoUniversity.Components
+namespace ContosoUniversity.Components.Courses
 {
     public partial class Courses
     {
         [Parameter] 
-        public CoursesViewModel CoursesVM { get; set; }
+        public SchoolItemViewModel CoursesVM { get; set; }
 
         protected CourseEditDto Course2Edit { get; set; }
         protected string Message { get; set; }
@@ -28,14 +29,14 @@ namespace ContosoUniversity.Components
 
         protected async Task OnCreateCourse()
         {
-            CourseEventArgs args = new CourseEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
                 UIMode = UIMode.Create
             };
-            await CourseAction(args);
+            await SchoolItemAction(args);
         }
 
-        public async Task CourseAction(CourseEventArgs args)
+        public async Task SchoolItemAction(SchoolItemEventArgs args)
         {
             if (args != null)
             {
@@ -43,11 +44,11 @@ namespace ContosoUniversity.Components
                 try
                 {
                     ISchoolViewDataRepository dataHelper = SchoolViewDataRepositoryFactory.GetViewDataRepository();
-                    if (args.CourseID != 0)
+                    if (args.ItemID != 0)
                     {
                         if (args.UIMode == UIMode.Details)
                         {
-                            var details = await dataHelper.GetCourseDetailsNoTrackingAsync(args.CourseID);
+                            var details = await dataHelper.GetCourseDetailsNoTrackingAsync(args.ItemID);
                             if (details == null)
                             {
                                 Message = "Course not found";
@@ -60,7 +61,7 @@ namespace ContosoUniversity.Components
                         }
                         else if (args.UIMode == UIMode.Edit)
                         {
-                            Course2Edit = await dataHelper.GetCourse2EditAsync(args.CourseID);
+                            Course2Edit = await dataHelper.GetCourse2EditAsync(args.ItemID);
                             if (Course2Edit == null)
                             {
                                 Message = "Course not found";
@@ -72,7 +73,7 @@ namespace ContosoUniversity.Components
                         }
                         else if (args.UIMode == UIMode.Delete)
                         {
-                            var details = await dataHelper.GetCourseDetailsNoTrackingAsync(args.CourseID);
+                            var details = await dataHelper.GetCourseDetailsNoTrackingAsync(args.ItemID);
                             if (details == null)
                             {
                                 Message = "Course not found";
@@ -100,8 +101,8 @@ namespace ContosoUniversity.Components
                 catch (Exception ex)
                 {
                     Logger.LogError(ex, "Courses-CourseAction id={0}, uiMode={1} - {2}: {3}",
-                        args.CourseID, args.UIMode, ex.GetType().Name, ex.Message);
-                    Message = $"Error setting up {args.UIMode} with CourseID = {args.CourseID} - contact Support";
+                        args.ItemID, args.UIMode, ex.GetType().Name, ex.Message);
+                    Message = $"Error setting up {args.UIMode} with CourseID = {args.ItemID} - contact Support";
                 }
             }
         }
@@ -128,11 +129,11 @@ namespace ContosoUniversity.Components
                     else
                     {
                         SelectedCourseDetails = null;
-                        CourseEventArgs args = new CourseEventArgs
+                        SchoolItemEventArgs args = new SchoolItemEventArgs
                         {
                             UIMode = UIMode.List
                         };
-                        await CourseAction(args);
+                        await SchoolItemAction(args);
                     }
                 }
             }
@@ -152,13 +153,13 @@ namespace ContosoUniversity.Components
             {
                 CourseItem details = null;
 
-                if ((CoursesVM.ViewMode == (int)UIMode.Details) && (CoursesVM.CourseID.HasValue))
+                if ((CoursesVM.ViewMode == (int)UIMode.Details) && (CoursesVM.ItemID.HasValue))
                 {
-                    details = await dataHelper.GetCourseDetailsNoTrackingAsync(CoursesVM.CourseID.Value);
+                    details = await dataHelper.GetCourseDetailsNoTrackingAsync(CoursesVM.ItemID.Value);
                     if ((details == null) || (details.CourseID == 0))
                     {
                         CoursesVM.ViewMode = (int)UIMode.List;
-                        Message = $"Course {CoursesVM.CourseID} not found";
+                        Message = $"Course {CoursesVM.ItemID} not found";
                         details = null;
                         UIMode = UIMode.List;
                     }
@@ -171,17 +172,17 @@ namespace ContosoUniversity.Components
             }
             else
             {
-                CoursesVM = new CoursesViewModel();
+                CoursesVM = new SchoolItemViewModel();
             }
         }
 
         protected async Task OnReturnToList()
         {
-            CourseEventArgs args = new CourseEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
                 UIMode = UIMode.List
             };
-            await CourseAction(args);
+            await SchoolItemAction(args);
         }
     }
 }

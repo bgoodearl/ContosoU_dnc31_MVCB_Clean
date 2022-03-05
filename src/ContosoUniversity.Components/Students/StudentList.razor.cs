@@ -2,6 +2,7 @@
 using ContosoUniversity.Components.Navigation;
 using CU.Application.Shared.Common.Models;
 using CU.Application.Shared.DataRequests.SchoolItems.Queries;
+using CU.Application.Shared.ViewModels;
 using CU.Application.Shared.ViewModels.Students;
 using MediatR;
 using Microsoft.AspNetCore.Components;
@@ -19,9 +20,9 @@ namespace ContosoUniversity.Components.Students
 
         [Inject] ILogger<StudentList> Logger { get; set; }
 
-        [Parameter] public StudentsViewModel StudentsVM { get; set; }
+        [Parameter] public SchoolItemViewModel StudentsVM { get; set; }
 
-        [Parameter] public EventCallback<StudentEventArgs> StudentAction { get; set; }
+        [Parameter] public EventCallback<SchoolItemEventArgs> StudentAction { get; set; }
 
         protected bool Loading { get; set; }
 
@@ -68,9 +69,9 @@ namespace ContosoUniversity.Components.Students
 
         public async Task OnItemDelete(StudentListItem item)
         {
-            StudentEventArgs args = new StudentEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
-                StudentID = item.ID,
+                ItemID = item.ID,
                 UIMode = UIMode.Delete
             };
             await StudentAction.InvokeAsync(args);
@@ -78,9 +79,9 @@ namespace ContosoUniversity.Components.Students
 
         public async Task OnItemDetails(StudentListItem item)
         {
-            StudentEventArgs args = new StudentEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
-                StudentID = item.ID,
+                ItemID = item.ID,
                 UIMode = UIMode.Details
             };
             await StudentAction.InvokeAsync(args);
@@ -88,9 +89,9 @@ namespace ContosoUniversity.Components.Students
 
         public async Task OnItemEdit(StudentListItem item)
         {
-            StudentEventArgs args = new StudentEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
-                StudentID = item.ID,
+                ItemID = item.ID,
                 UIMode = UIMode.Edit
             };
             await StudentAction.InvokeAsync(args);

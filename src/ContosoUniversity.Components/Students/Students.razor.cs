@@ -7,13 +7,14 @@ using System;
 using System.Threading.Tasks;
 using CASE = CU.Application.Shared.Common.Exceptions;
 using static CU.Application.Shared.CommonDefs;
+using CU.Application.Shared.ViewModels;
 
 namespace ContosoUniversity.Components.Students
 {
     public partial class Students
     {
         [Parameter]
-        public StudentsViewModel StudentsVM { get; set; }
+        public SchoolItemViewModel StudentsVM { get; set; }
 
         protected string Message { get; set; }
         protected UIMode UIMode { get; set; }
@@ -25,20 +26,20 @@ namespace ContosoUniversity.Components.Students
         [Inject] ISender Mediator { get; set; }
 
 
-        public async Task StudentAction(StudentEventArgs args)
+        public async Task StudentAction(SchoolItemEventArgs args)
         {
             if (args != null)
             {
                 Message = null;
                 try
                 {
-                    if (args.StudentID != 0)
+                    if (args.ItemID != 0)
                     {
                         if (args.UIMode == UIMode.Edit)
                         {
                             GetStudentEditDtoQuery query = new GetStudentEditDtoQuery
                             {
-                                StudentId = args.StudentID
+                                StudentId = args.ItemID
                             };
                             Student2Edit = await Mediator.Send(query);
                             if (Student2Edit != null)
@@ -63,7 +64,10 @@ namespace ContosoUniversity.Components.Students
                         }
                         else if (args.UIMode == UIMode.Create)
                         {
-                            Student2Edit = new StudentEditDto();
+                            Student2Edit = new StudentEditDto
+                            {
+                                EnrollmentDate = DateTime.Now.Date
+                            };
                             UIMode = args.UIMode;
                         }
                     }
@@ -71,14 +75,14 @@ namespace ContosoUniversity.Components.Students
                 catch (CASE.NotFoundException ex)
                 {
                     Logger.LogError(ex, "Students-StudentAction id={0}, uiMode={1} - {2}: {3}",
-                        args.StudentID, args.UIMode, ex.GetType().Name, ex.Message);
-                    Message = $"Error setting up {args.UIMode} with StudentID = {args.StudentID} - Student not found - contact Support";
+                        args.ItemID, args.UIMode, ex.GetType().Name, ex.Message);
+                    Message = $"Error setting up {args.UIMode} with StudentID = {args.ItemID} - Student not found - contact Support";
                 }
                 catch (Exception ex)
                 {
                     Logger.LogError(ex, "Students-StudentAction id={0}, uiMode={1} - {2}: {3}",
-                        args.StudentID, args.UIMode, ex.GetType().Name, ex.Message);
-                    Message = $"Error setting up {args.UIMode} with StudentID = {args.StudentID} - contact Support";
+                        args.ItemID, args.UIMode, ex.GetType().Name, ex.Message);
+                    Message = $"Error setting up {args.UIMode} with StudentID = {args.ItemID} - contact Support";
                 }
             }
         }
@@ -87,7 +91,7 @@ namespace ContosoUniversity.Components.Students
 
         protected async Task OnCreateStudent()
         {
-            StudentEventArgs args = new StudentEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
                 UIMode = UIMode.Create
             };

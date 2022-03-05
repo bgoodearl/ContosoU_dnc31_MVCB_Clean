@@ -21,7 +21,7 @@ namespace ContosoUniversity.Controllers
         {
             CASVMS.StudentsListViewModel model = new CASVMS.StudentsListViewModel
             {
-                StudentID = id,
+                ItemID = id,
                 ViewMode = mode.HasValue ? mode.Value : 0
             };
             if (mode < 0)

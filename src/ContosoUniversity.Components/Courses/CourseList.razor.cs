@@ -3,6 +3,7 @@ using ContosoUniversity.Components.Navigation;
 using CU.Application.Shared.Common.Models;
 using CU.Application.Shared.DataRequests.SchoolItems.Queries;
 using CU.Application.Shared.Models.SchoolDtos;
+using CU.Application.Shared.ViewModels;
 using CU.Application.Shared.ViewModels.Courses;
 using MediatR;
 using Microsoft.AspNetCore.Components;
@@ -12,7 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static CU.Application.Shared.CommonDefs;
 
-namespace ContosoUniversity.Components
+namespace ContosoUniversity.Components.Courses
 {
     public partial class CourseList
     {
@@ -20,9 +21,9 @@ namespace ContosoUniversity.Components
 
         [Inject] ILogger<CourseList> Logger { get; set; }
 
-        [Parameter] public CoursesViewModel CoursesVM { get; set; }
+        [Parameter] public SchoolItemViewModel CoursesVM { get; set; }
 
-        [Parameter] public EventCallback<CourseEventArgs> CourseAction { get; set; }
+        [Parameter] public EventCallback<SchoolItemEventArgs> SchoolItemAction { get; set; }
 
         protected bool Loading { get; set; }
 
@@ -70,32 +71,32 @@ namespace ContosoUniversity.Components
 
         public async Task OnItemDelete(CourseListItemDto item)
         {
-            CourseEventArgs args = new CourseEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
-                CourseID = item.CourseID,
+                ItemID = item.CourseID,
                 UIMode = UIMode.Delete
             };
-            await CourseAction.InvokeAsync(args);
+            await SchoolItemAction.InvokeAsync(args);
         }
 
         public async Task OnItemDetails(CourseListItemDto item)
         {
-            CourseEventArgs args = new CourseEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
-                CourseID = item.CourseID,
+                ItemID = item.CourseID,
                 UIMode = UIMode.Details
             };
-            await CourseAction.InvokeAsync(args);
+            await SchoolItemAction.InvokeAsync(args);
         }
 
         public async Task OnItemEdit(CourseListItemDto item)
         {
-            CourseEventArgs args = new CourseEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
-                CourseID = item.CourseID,
+                ItemID = item.CourseID,
                 UIMode = UIMode.Edit
             };
-            await CourseAction.InvokeAsync(args);
+            await SchoolItemAction.InvokeAsync(args);
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)

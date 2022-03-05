@@ -7,6 +7,7 @@ using System;
 using System.Threading.Tasks;
 using CASE = CU.Application.Shared.Common.Exceptions;
 using static CU.Application.Shared.CommonDefs;
+using CU.Application.Shared.ViewModels;
 
 namespace ContosoUniversity.Components.Students
 {
@@ -16,9 +17,9 @@ namespace ContosoUniversity.Components.Students
 
         [Parameter] public StudentEditDto Student2Edit { get; set; }
 
-        [Parameter] public EventCallback<StudentEventArgs> StudentAction { get; set; }
+        [Parameter] public EventCallback<SchoolItemEventArgs> StudentAction { get; set; }
 
-        [Inject] protected ILogger<CourseEdit> Logger { get; set; }
+        [Inject] protected ILogger<StudentEdit> Logger { get; set; }
 
         [Inject] ISender Mediator { get; set; }
 
@@ -85,7 +86,7 @@ namespace ContosoUniversity.Components.Students
 
         public async Task OnReturnToList()
         {
-            StudentEventArgs args = new StudentEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
                 UIMode = UIMode.List
             };

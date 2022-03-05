@@ -33,7 +33,7 @@ else
 }
 @if (UIMode == UIMode.List)
 {
-    <CourseList CoursesVM=@CoursesVM CourseAction="ca => CourseAction(ca)" />
+    <CourseList CoursesVM=@CoursesVM SchoolItemAction="ca => SchoolItemAction(ca)" />
 }
 else if (UIMode == UIMode.Details)
 {
@@ -42,11 +42,11 @@ else if (UIMode == UIMode.Details)
 }
 else if (UIMode == UIMode.Edit)
 {
-    <CourseEdit Course2Edit=@Course2Edit CourseAction="ca => CourseAction(ca)" />
+    <CourseEdit Course2Edit=@Course2Edit SchoolItemAction="ca => SchoolItemAction(ca)" />
 }
 else if (UIMode == UIMode.Create)
 {
-    <CourseEdit NewCourse=true CourseAction="ca => CourseAction(ca)" />
+    <CourseEdit NewCourse=true SchoolItemAction="ca => SchoolItemAction(ca)" />
 }
 else if (UIMode == UIMode.Delete)
 {

@@ -21,7 +21,7 @@ namespace ContosoUniversity.Controllers
         {
             InstructorsListViewModel model = new InstructorsListViewModel
             {
-                InstructorID = id,
+                ItemID = id,
                 ViewMode = mode.HasValue ? mode.Value : 0
             };
             if (mode < 0)

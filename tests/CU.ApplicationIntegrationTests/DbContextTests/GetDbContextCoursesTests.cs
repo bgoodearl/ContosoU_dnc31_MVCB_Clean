@@ -62,7 +62,7 @@ namespace CU.ApplicationIntegrationTests.DbContextTests
                 }
                 _testOutputHelper.WriteLine($"courses.Count = {courses.Count}, with Instructors count = {coursesWithInstructorsCount}");
                 firstCourse.Should().NotBeNull();
-                string? firstCourseFirstInstructorName = firstCourse.Instructors.Count > 0 ? firstCourse.Instructors.First().FullName : null;
+                string firstCourseFirstInstructorName = firstCourse.Instructors.Count > 0 ? firstCourse.Instructors.First().FullName : null;
                 _testOutputHelper.WriteLine($"First Course ID={firstCourse.CourseID} (Id={firstCourse.Id}) [{firstCourse.Title}], # Instructors: {firstCourse.Instructors.Count} first=[{firstCourseFirstInstructorName}]");
                 coursesWithInstructorsCount.Should().BePositive();
             }

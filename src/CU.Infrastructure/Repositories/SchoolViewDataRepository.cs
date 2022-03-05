@@ -102,6 +102,11 @@ namespace CU.Infrastructure.Repositories
         {
             using (ISchoolRepository repo = SchoolRepositoryFactory.GetSchoolRepository())
             {
+                int departmentID;
+                if (!string.IsNullOrWhiteSpace(model.DepartmentIDstr) && int.TryParse(model.DepartmentIDstr, out departmentID))
+                {
+                    model.DepartmentID = departmentID;
+                }
                 return await repo.SaveCourseChangesAsync(model);
             }
         }

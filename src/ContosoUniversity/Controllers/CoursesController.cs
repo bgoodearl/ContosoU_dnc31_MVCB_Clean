@@ -40,7 +40,7 @@ namespace ContosoUniversity.Controllers
             {
                 CUSVMC.CoursesListViewModel model = new CUSVMC.CoursesListViewModel
                 {
-                    CourseID = id,
+                    ItemID = id,
                     CourseList = (mode != null && mode.Value < 0) ? await repo.GetCourseListItemsNoTrackingAsync() : new List<CUSVMC.CourseListItem>(),
                     ViewMode = mode.HasValue ? mode.Value : 0
                 };

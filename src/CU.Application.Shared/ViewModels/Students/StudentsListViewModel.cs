@@ -2,7 +2,7 @@
 
 namespace CU.Application.Shared.ViewModels.Students
 {
-    public class StudentsListViewModel : StudentsViewModel
+    public class StudentsListViewModel : SchoolItemViewModel
     {
         public IEnumerable<StudentListItem> StudentsList { get; set; } = new List<StudentListItem>();
     }

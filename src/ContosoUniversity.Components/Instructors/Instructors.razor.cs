@@ -1,5 +1,4 @@
-﻿using CU.Application.Shared.DataRequests.SchoolItems.Queries;
-using CU.Application.Shared.ViewModels.Instructors;
+﻿using CU.Application.Shared.ViewModels.Instructors;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
@@ -7,12 +6,13 @@ using System;
 using System.Threading.Tasks;
 using CASE = CU.Application.Shared.Common.Exceptions;
 using static CU.Application.Shared.CommonDefs;
+using CU.Application.Shared.ViewModels;
 
 namespace ContosoUniversity.Components.Instructors
 {
     public partial class Instructors
     {
-        [Parameter] public InstructorsViewModel InstructorsVM { get; set; }
+        [Parameter] public SchoolItemViewModel InstructorsVM { get; set; }
 
         protected string Message { get; set; }
         protected UIMode UIMode { get; set; }
@@ -20,14 +20,14 @@ namespace ContosoUniversity.Components.Instructors
         [Inject] protected ILogger<Instructors> Logger { get; set; }
         [Inject] ISender Mediator { get; set; }
 
-        public async Task InstructorAction(InstructorEventArgs args)
+        public async Task InstructorAction(SchoolItemEventArgs args)
         {
             if (args != null)
             {
                 Message = null;
                 try
                 {
-                    if (args.InstructorID != 0)
+                    if (args.ItemID != 0)
                     {
 
                     }
@@ -47,14 +47,14 @@ namespace ContosoUniversity.Components.Instructors
                 catch (CASE.NotFoundException ex)
                 {
                     Logger.LogError(ex, "Instructors-InstructorAction id={0}, uiMode={1} - {2}: {3}",
-                        args.InstructorID, args.UIMode, ex.GetType().Name, ex.Message);
-                    Message = $"Error setting up {args.UIMode} with InstructorID = {args.InstructorID} - Instructor not found - contact Support";
+                        args.ItemID, args.UIMode, ex.GetType().Name, ex.Message);
+                    Message = $"Error setting up {args.UIMode} with InstructorID = {args.ItemID} - Instructor not found - contact Support";
                 }
                 catch (Exception ex)
                 {
                     Logger.LogError(ex, "Instructors-InstructorAction id={0}, uiMode={1} - {2}: {3}",
-                        args.InstructorID, args.UIMode, ex.GetType().Name, ex.Message);
-                    Message = $"Error setting up {args.UIMode} with InstructorID = {args.InstructorID} - contact Support";
+                        args.ItemID, args.UIMode, ex.GetType().Name, ex.Message);
+                    Message = $"Error setting up {args.UIMode} with InstructorID = {args.ItemID} - contact Support";
                 }
             }
         }

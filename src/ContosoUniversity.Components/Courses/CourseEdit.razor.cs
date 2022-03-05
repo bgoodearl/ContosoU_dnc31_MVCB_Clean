@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using static CU.Application.Shared.CommonDefs;
 
-namespace ContosoUniversity.Components
+namespace ContosoUniversity.Components.Courses
 {
     public partial class CourseEdit
     {
         [Parameter] public CourseEditDto Course2Edit { get; set; }
 
-        [Parameter] public EventCallback<CourseEventArgs> CourseAction { get; set; }
+        [Parameter] public EventCallback<SchoolItemEventArgs> SchoolItemAction { get; set; }
 
         [Parameter] public bool NewCourse { get; set; }
 
@@ -128,11 +128,11 @@ namespace ContosoUniversity.Components
 
         public async Task OnReturnToList()
         {
-            CourseEventArgs args = new CourseEventArgs
+            SchoolItemEventArgs args = new SchoolItemEventArgs
             {
                 UIMode = UIMode.List
             };
-            await CourseAction.InvokeAsync(args);
+            await SchoolItemAction.InvokeAsync(args);
         }
     }
 }
