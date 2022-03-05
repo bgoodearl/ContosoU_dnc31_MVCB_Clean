@@ -33,6 +33,9 @@ namespace CU.Application.Common.Mapping
 
             CreateMap<Student, StudentListItem>()
                 .ForMember(d => d.ID, opt => opt.MapFrom(x => x.ID)); //Prevent AutoMapper from confusing ID and Id
+
+            CreateMap<Student, StudentEditDto>()
+                .ForMember(d => d.ID, opt => opt.MapFrom(x => x.ID)); //Prevent AutoMapper from confusing ID and Id
         }
     }
 }
