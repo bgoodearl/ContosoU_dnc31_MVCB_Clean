@@ -15,7 +15,6 @@ namespace ContosoUniversity.Components.Students
         [Parameter]
         public StudentsViewModel StudentsVM { get; set; }
 
-        //protected StudentEditDto Student2Edit { get; set; }
         protected string Message { get; set; }
         protected UIMode UIMode { get; set; }
         protected StudentListItem SelectedStudent { get; set; }
