@@ -46,9 +46,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Components", "src\Demo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoUniversity.Components", "src\ContosoUniversity.Components\ContosoUniversity.Components.csproj", "{FD04B662-B8D3-4DE2-81F3-FAB76CF1927A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CU.Application.Data.Common", "src\CU.Application.Data.Common\CU.Application.Data.Common.csproj", "{D867B89E-BF10-4920-9D47-8DA10D9667CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CU.Application.Data.Common", "src\CU.Application.Data.Common\CU.Application.Data.Common.csproj", "{D867B89E-BF10-4920-9D47-8DA10D9667CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CU.Application.UnitTests", "tests\CU.Application.UnitTests\CU.Application.UnitTests.csproj", "{893FC97D-C195-481B-A031-5A0F04C7AD0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CU.Application.UnitTests", "tests\CU.Application.UnitTests\CU.Application.UnitTests.csproj", "{893FC97D-C195-481B-A031-5A0F04C7AD0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

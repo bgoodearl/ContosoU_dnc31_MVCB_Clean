@@ -1,0 +1,23 @@
+﻿@using static CU.Application.Shared.CommonDefs
+
+@if (UIMode == UIMode.List)
+{
+    <h1 class="h2">Instructors - Blazor</h1>
+    @*<button @onclick="() => OnCreateInstructor()" class="btn" style="background-color:lightgray;">Create Instructor</button>*@
+}
+else
+{
+    <h1 class="h2">Instructors? - Blazor</h1>
+}
+@if (!string.IsNullOrWhiteSpace(Message))
+{
+    <p>@Message</p>
+}
+@if (UIMode == UIMode.List)
+{
+    <InstructorList InstructorsVM=@InstructorsVM InstructorAction="ca => InstructorAction(ca)" />
+}
+else
+{
+    <p>??</p>
+}

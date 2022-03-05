@@ -12,6 +12,9 @@
             Added test CanGetCoursesWithInstructorsAsync() (from .NET 6 version)<br/>
             Added UpdateStudentItemCommand, handler, validator, test<br/>
             Added StudentEdit component<br/>
+            Added GetInstructorListItemsWithPaginationQuery, test<br/>
+            Added razor components: Instructors, InstructorList<br/>
+            Updated Instructors Index MVC page to use razor components by default<br/>
 		</td>
     </tr>
     <tr>

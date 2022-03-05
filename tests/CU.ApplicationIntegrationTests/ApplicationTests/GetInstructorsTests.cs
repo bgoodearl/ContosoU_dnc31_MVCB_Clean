@@ -32,5 +32,25 @@ namespace CU.ApplicationIntegrationTests.ApplicationTests
             _testOutputHelper.WriteLine($"Second Instructor ID={secondInstructor.ID}, Name=[{secondInstructor.FullName}], OfficeAssignment=[{secondInstructor.OfficeAssignment}]");
             _testOutputHelper.WriteLine($"Items.Count = {instructors.Count}");
         }
+
+        [Fact]
+        public async Task CanGetInstructorsPaginated()
+        {
+            GetInstructorListItemsWithPaginationQuery query = new GetInstructorListItemsWithPaginationQuery
+            {
+                PageNumber = 1,
+                PageSize = 3
+            };
+            var result = await SendAsync(query);
+            result.Should().NotBeNull();
+            result.Items.Should().NotBeNull();
+            result.Items.Count.Should().BePositive();
+            result.TotalCount.Should().BeGreaterThanOrEqualTo(result.Items.Count);
+            InstructorListItem firstListItem = result.Items[0];
+            firstListItem.Should().NotBeNull();
+
+            _testOutputHelper.WriteLine($"First Instructor ID = {firstListItem.ID}, Name = [{firstListItem.FullName}]");
+            _testOutputHelper.WriteLine($"Items.Count = {result.Items.Count}, TotalCount = {result.TotalCount}");
+        }
     }
 }

@@ -16,20 +16,20 @@ namespace ContosoUniversity.Controllers
         {
         }
 
-        [Route("~/[Controller]")]
-        public async Task<IActionResult> Index()
+        [Route("~/[Controller]/{mode?}/{id?}")]
+        public async Task<IActionResult> Index(int? mode, int? id)
         {
-#if true
-            GetInstructorListItemsQuery query = new GetInstructorListItemsQuery();
-            List<InstructorListItem> instructors = await SendQueryAsync(query);
-            return View(instructors);
-#else
-            using (ISchoolRepository repo = GetSchoolRepository())
+            InstructorsListViewModel model = new InstructorsListViewModel
             {
-                List<InstructorListItem> instructors = await repo.GetInstructorListItemsNoTrackingAsync();
-                return View(instructors);
+                InstructorID = id,
+                ViewMode = mode.HasValue ? mode.Value : 0
+            };
+            if (mode < 0)
+            {
+                GetInstructorListItemsQuery query = new GetInstructorListItemsQuery();
+                model.Instructors = await SendQueryAsync(query);
             }
-#endif
+            return View(model);
         }
     }
 }
