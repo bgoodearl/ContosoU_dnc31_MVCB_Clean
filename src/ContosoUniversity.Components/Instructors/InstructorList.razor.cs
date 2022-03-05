@@ -79,12 +79,12 @@ namespace ContosoUniversity.Components.Instructors
             }
         }
 
-        //Uncomment OnInitializedAsync() if needed for debugging problems with initial loading
-        protected override async Task OnInitializedAsync()
-        {
-            bool shouldLoad = ((Mediator != null) && !Loading && (InstructorItemList.Count() == 0));
-            if (Logger != null) { Logger.LogDebug($"InstructorList.OnInitializedAsync shouldLoad={shouldLoad}"); }
-        }
+        ////Uncomment OnInitializedAsync() if needed for debugging problems with initial loading
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    bool shouldLoad = ((Mediator != null) && !Loading && (InstructorItemList.Count() == 0));
+        //    if (Logger != null) { Logger.LogDebug($"InstructorList.OnInitializedAsync shouldLoad={shouldLoad}"); }
+        //}
 
         #endregion events
     }
