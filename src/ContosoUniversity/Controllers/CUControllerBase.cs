@@ -42,11 +42,6 @@ namespace ContosoUniversity.Controllers
             return SchoolViewDataRepositoryFactory.GetViewDataRepository();
         }
 
-        //ISchoolDbContextFactory SchoolDbContextFactory { get; }
-        //protected ISchoolDbContext GetSchoolDbContext()
-        //{
-        //    //return SchoolDbContextFactory.GetSchoolDbContext();
-        //}
         protected ISchoolDbContext SchoolDbContext { get; }
 
         protected ISchoolRepositoryFactory SchoolRepositoryFactory { get; }
