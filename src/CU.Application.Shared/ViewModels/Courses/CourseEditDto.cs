@@ -15,6 +15,6 @@ namespace CU.Application.Shared.ViewModels.Courses
 
         public int DepartmentID { get; set; } = 0;
 
-        public string DepartmentIDstr { get; set; }
+        public string DepartmentIDstr { get; set; } = string.Empty;
     }
 }

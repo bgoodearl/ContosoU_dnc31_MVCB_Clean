@@ -1,4 +1,5 @@
-﻿@using static CU.Application.Shared.CommonDefs
+﻿@using ContosoUniversity.Components.Courses
+@using static CU.Application.Shared.CommonDefs
 
 @if (UIMode == UIMode.List)
 {
@@ -16,6 +17,14 @@ else
 @if (UIMode == UIMode.List)
 {
     <InstructorList InstructorsVM=@InstructorsVM InstructorAction="ca => InstructorAction(ca)" />
+    @if (InstructorId4Courses != null)
+    {
+        <div>
+            &nbsp;<br/>
+            <h2 class="h4">Courses for Instructor: @InstructorName4Courses</h2>
+            <CourseList4Instructor InstructorID=@InstructorId4Courses.Value />
+        </div>
+    }
 }
 else
 {

@@ -42,6 +42,37 @@ namespace CU.ApplicationIntegrationTests.ApplicationTests
         }
 
         [SkippableFact]
+        public async Task CanGetCoursesForInstructor()
+        {
+            int instructorId = 0;
+            const string instructorLastName = "Kapoor";
+            using (var scope = _fixture.GetServiceScopeFactory(_testOutputHelper).CreateScope())
+            {
+                ISchoolDbContext cuContext = scope.ServiceProvider.GetRequiredService<ISchoolDbContext>();
+                cuContext.Should().NotBeNull();
+                instructorId = cuContext.Instructors.Where(i => i.LastName == instructorLastName)
+                    .Select(i => i.ID)
+                    .SingleOrDefault();
+                Skip.If(instructorId == 0, $"Did not find Instructor with Last Name [{instructorLastName}] - test cannot be completed");
+            }
+
+            GetCourseListItemsQuery query = new GetCourseListItemsQuery
+            {
+                InstructorID = instructorId,
+                SortOrder = CourseSortOrder.ByCourseID
+            };
+
+            var result = await SendAsync(query);
+            result.Should().NotBeNull();
+            result.Should().NotBeNull();
+            result.Count.Should().BePositive();
+            CourseListItemDto firstListItem = result.First();
+            firstListItem.Should().NotBeNull();
+            _testOutputHelper.WriteLine($"First course for instructor [{instructorLastName}], CourseID = {firstListItem.CourseID}, Title = [{firstListItem.Title}]");
+            _testOutputHelper.WriteLine($"Items.Count = {result.Count}");
+        }
+
+        [SkippableFact]
         public async Task CanGetCoursesPaginatedForInstructor()
         {
             int instructorId = 0;

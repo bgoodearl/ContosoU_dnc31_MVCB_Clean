@@ -12,7 +12,7 @@ namespace CU.Application.Shared.ViewModels.Students
         [Display(Name = "Enrollment Date")]
         public DateTime EnrollmentDate { get; set; }
 
-        public string FirstMidName { get; set; }
+        public string FirstMidName { get; set; } = string.Empty;
 
         [Display(Name = "Full Name")]
         public string FullName
@@ -20,6 +20,6 @@ namespace CU.Application.Shared.ViewModels.Students
             get { return LastName + ", " + FirstMidName; }
         }
 
-        public string LastName { get; set; }
+        public string LastName { get; set; } = string.Empty;
     }
 }

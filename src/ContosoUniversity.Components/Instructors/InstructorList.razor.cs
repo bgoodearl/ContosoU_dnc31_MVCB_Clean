@@ -87,6 +87,21 @@ namespace ContosoUniversity.Components.Instructors
         //    if (Logger != null) { Logger.LogDebug($"InstructorList.OnInitializedAsync shouldLoad={shouldLoad}"); }
         //}
 
+        public void OnShowCourses(InstructorListItem item)
+        {
+            if ((item != null) && (item.ID > 0))
+            {
+                SchoolItemEventArgs args = new SchoolItemEventArgs
+                {
+                    SecondaryId = item.ID,
+                    SecondaryOperation = (int)SecondaryOps.ShowCoursesForInstructor,
+                    SecondaryOpString1 = item.FullName,
+                    UIMode = UIMode.NoChange
+                };
+                InstructorAction.InvokeAsync(args);
+            }
+        }
+
         #endregion events
     }
 }

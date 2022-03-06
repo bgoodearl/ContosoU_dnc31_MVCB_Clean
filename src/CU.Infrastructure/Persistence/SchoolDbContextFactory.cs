@@ -1,5 +1,4 @@
-﻿
-using CU.Application.Data.Common.Interfaces;
+﻿using CU.Application.Data.Common.Interfaces;
 using CU.Infrastructure.Interfaces;
 using System;
 

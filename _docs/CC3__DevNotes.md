@@ -6,6 +6,16 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>3/6/2022</td><td>bg</td>
+		<td>
+            Added GetCourseListItemsQuery with handler and test<br/>
+            Extended SchoolItemEventArgs with additional properties<br/>
+            Minor code cleanup<br/>
+            Added component CourseList4Instructor, 
+            use optionally when Instructors list is visible<br/>
+		</td>
+    </tr>
+    <tr>
         <td>3/5/2022</td><td>bg</td>
 		<td>
             Tweaked use of ISchoolDbContextFactory<br/>

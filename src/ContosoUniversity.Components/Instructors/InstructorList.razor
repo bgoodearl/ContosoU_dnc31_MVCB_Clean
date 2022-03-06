@@ -24,6 +24,7 @@
                             @item.HireDate
                         </td>
                         <td>
+                            <span @onclick="() => OnShowCourses(item)" class="btn" style="background-color:lightgray;" value="@item.ID">Show Courses</span>
                             @*<span @onclick="() => OnItemEdit(item)" class="btn" style="background-color:lightgray;" value="@item.ID">Edit</span> |
                                 <span @onclick="() => OnItemDetails(item)" class="btn" style="background-color:lightgray;" value="@item.StudentID">Details</span> |
                                 <span @onclick="() => OnItemDelete(item)" class="btn" style="background-color:lightgray;" value="@item.StudentID">Delete</span>*@

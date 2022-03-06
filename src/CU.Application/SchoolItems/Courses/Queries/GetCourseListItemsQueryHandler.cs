@@ -3,25 +3,23 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using CU.Application.Data.Common.Interfaces;
-using CU.Application.Common.Mapping;
-using CU.Application.Shared.Common.Models;
 using CU.Application.Shared.DataRequests.SchoolItems.Queries;
 using CU.Application.Shared.Models.SchoolDtos;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Threading;
 using CM = ContosoUniversity.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Threading;
+using System.Data.Entity;
 
 namespace CU.Application.SchoolItems.Courses.Queries
 {
-    public class GetCourseListItemsWithPaginationQueryHandler : IRequestHandler<GetCourseListItemsWithPaginationQuery, PaginatedList<CourseListItemDto>>
+    public class GetCourseListItemsQueryHandler : IRequestHandler<GetCourseListItemsQuery, List<CourseListItemDto>>
     {
         ISchoolDbContext Context { get; }
         IMapper Mapper { get; }
 
-        public GetCourseListItemsWithPaginationQueryHandler(ISchoolDbContext context, IMapper mapper)
+        public GetCourseListItemsQueryHandler(ISchoolDbContext context, IMapper mapper)
         {
             Guard.Against.Null(context, nameof(context));
             Guard.Against.Null(mapper, nameof(mapper));
@@ -29,7 +27,7 @@ namespace CU.Application.SchoolItems.Courses.Queries
             Mapper = mapper;
         }
 
-        public async Task<PaginatedList<CourseListItemDto>> Handle(GetCourseListItemsWithPaginationQuery request, CancellationToken cancellationToken)
+        public async Task<List<CourseListItemDto>> Handle(GetCourseListItemsQuery request, CancellationToken cancellationToken)
         {
             IQueryable<CM.Course> coursesQueryable = null;
 
@@ -51,7 +49,6 @@ namespace CU.Application.SchoolItems.Courses.Queries
                 coursesQueryable = Context.Courses
                     .Include(c => c.Department);
             }
-
             if (request.SortOrder == CourseSortOrder.ByCourseTitle)
             {
                 coursesQueryable = coursesQueryable
@@ -65,7 +62,8 @@ namespace CU.Application.SchoolItems.Courses.Queries
             }
             return await coursesQueryable
                 .ProjectTo<CourseListItemDto>(Mapper.ConfigurationProvider)
-                .PaginatedListAsync(request.PageNumber, request.PageSize);
+                .ToListAsync();
         }
+
     }
 }

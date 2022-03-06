@@ -17,6 +17,8 @@ namespace ContosoUniversity.Components.Instructors
         [Inject] protected ILogger<Instructors> Logger { get; set; }
         [Inject] ISender Mediator { get; set; }
 
+        protected int? InstructorId4Courses { get; set; }
+        protected string InstructorName4Courses { get; set; }
         protected string Message { get; set; }
         protected UIMode UIMode { get; set; }
 
@@ -24,10 +26,34 @@ namespace ContosoUniversity.Components.Instructors
         {
             if (args != null)
             {
+                InstructorId4Courses = null;
                 Message = null;
                 try
                 {
-                    if (args.ItemID != 0)
+                    if (args.UIMode == UIMode.NoChange)
+                    {
+                        Logger.LogDebug($"Instructors-InstructorAction UIMode {args.UIMode}, 2nd Id: {args.SecondaryId}, 2nd op: {args.SecondaryOperation}");
+                        if (args.SecondaryOperation.HasValue && (args.SecondaryOperation.Value == (int)SecondaryOps.ShowCoursesForInstructor))
+                        {
+                            //Message = $"2nd Op = {args.SecondaryOperation}, Id = {args.SecondaryId}";
+
+                            if (args.SecondaryId.HasValue)
+                            {
+                                bool refresh = false;
+                                if (!InstructorId4Courses.HasValue || (InstructorId4Courses.Value != args.SecondaryId.Value))
+                                {
+                                    refresh = true;
+                                }
+                                InstructorId4Courses = args.SecondaryId.Value;
+                                InstructorName4Courses = args.SecondaryOpString1;
+                                if (refresh)
+                                {
+                                    await InvokeAsync(() => StateHasChanged());
+                                }
+                            }
+                        }
+                    }
+                    else if (args.ItemID != 0)
                     {
 
                     }

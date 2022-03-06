@@ -17,13 +17,13 @@ namespace ContosoUniversity.Components.Courses
 {
     public partial class CourseList
     {
-        [Inject] ISender Mediator { get; set; }
-
-        [Inject] ILogger<CourseList> Logger { get; set; }
-
         [Parameter] public SchoolItemViewModel CoursesVM { get; set; }
 
         [Parameter] public EventCallback<SchoolItemEventArgs> SchoolItemAction { get; set; }
+
+        [Inject] ISender Mediator { get; set; }
+
+        [Inject] ILogger<CourseList> Logger { get; set; }
 
         protected bool Loading { get; set; }
 

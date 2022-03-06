@@ -1,0 +1,42 @@
+﻿<div class="course-list">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Number
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Credits
+                </th>
+                <th>
+                    Department
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (CourseItemList != null)
+            {
+                foreach (var item in CourseItemList)
+                {
+                    <tr>
+                        <td>
+                            @item.CourseID
+                        </td>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            @item.Credits
+                        </td>
+                        <td>
+                            @item.Department
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
