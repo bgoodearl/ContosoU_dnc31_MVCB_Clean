@@ -7,6 +7,10 @@ namespace CU.Application.Shared.DataRequests.SchoolItems.Queries
 {
     public class GetCourseListItemsWithPaginationQuery : IPaginatedListQuery, IRequest<PaginatedList<CourseListItemDto>>
     {
+        /// <summary>
+        /// InstructorID - optional - limits results to courses taught by instructor
+        /// </summary>
+        public int? InstructorID { get; set; }
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
         public CourseSortOrder SortOrder { get; set; }

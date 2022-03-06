@@ -18,6 +18,8 @@
             Refactored Components - share SchoolItemEventArgs, SchoolItemViewModel,
             Moved Course components to Courses folder<br/>
             Fixed problem with saving changed DepartmentID when saving Course edit<br/>
+            Added optional InstructorID to GetCourseListItemsWithPaginationQuery,
+            updated handler, added test<br/>
 		</td>
     </tr>
     <tr>
