@@ -13,17 +13,16 @@ namespace ContosoUniversity.Components.Students
 {
     public partial class Students
     {
-        [Parameter]
-        public SchoolItemViewModel StudentsVM { get; set; }
+        [Parameter] public SchoolItemViewModel StudentsVM { get; set; }
+
+        [Inject] protected ILogger<Students> Logger { get; set; }
+        [Inject] ISender Mediator { get; set; }
 
         protected string Message { get; set; }
         protected UIMode UIMode { get; set; }
         protected StudentListItem SelectedStudent { get; set; }
-        //protected StudentItem SelectedCourseDetails { get; set; }
+        //protected StudentItem SelectedStudentDetails { get; set; }
         protected StudentEditDto Student2Edit { get; set; }
-
-        [Inject] protected ILogger<Students> Logger { get; set; }
-        [Inject] ISender Mediator { get; set; }
 
 
         public async Task StudentAction(SchoolItemEventArgs args)

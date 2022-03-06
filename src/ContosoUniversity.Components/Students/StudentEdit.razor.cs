@@ -15,12 +15,11 @@ namespace ContosoUniversity.Components.Students
     {
         [Parameter] public bool NewStudent { get; set; }
 
-        [Parameter] public StudentEditDto Student2Edit { get; set; }
+        [Parameter] public StudentEditDto Student2Edit { get; set; } = new StudentEditDto();
 
         [Parameter] public EventCallback<SchoolItemEventArgs> StudentAction { get; set; }
 
         [Inject] protected ILogger<StudentEdit> Logger { get; set; }
-
         [Inject] ISender Mediator { get; set; }
 
         protected string Message { get; set; }

@@ -14,11 +14,11 @@ namespace ContosoUniversity.Components.Instructors
     {
         [Parameter] public SchoolItemViewModel InstructorsVM { get; set; }
 
-        protected string Message { get; set; }
-        protected UIMode UIMode { get; set; }
-
         [Inject] protected ILogger<Instructors> Logger { get; set; }
         [Inject] ISender Mediator { get; set; }
+
+        protected string Message { get; set; }
+        protected UIMode UIMode { get; set; }
 
         public async Task InstructorAction(SchoolItemEventArgs args)
         {

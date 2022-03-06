@@ -16,13 +16,13 @@ namespace ContosoUniversity.Components.Instructors
 {
     public partial class InstructorList
     {
-        [Inject] ISender Mediator { get; set; }
-
-        [Inject] ILogger<InstructorList> Logger { get; set; }
-
         [Parameter] public SchoolItemViewModel InstructorsVM { get; set; }
 
         [Parameter] public EventCallback<SchoolItemEventArgs> InstructorAction { get; set; }
+
+        [Inject] ISender Mediator { get; set; }
+
+        [Inject] ILogger<InstructorList> Logger { get; set; }
 
         protected bool Loading { get; set; }
 
