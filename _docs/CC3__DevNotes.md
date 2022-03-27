@@ -6,6 +6,12 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>3/27/2022</td><td>bg</td>
+		<td>
+            Changed http port in launchSettings to fix VS2019 debug startup<br/>
+		</td>
+    </tr>
+    <tr>
         <td>3/6/2022</td><td>bg</td>
 		<td>
             Added GetCourseListItemsQuery with handler and test<br/>
