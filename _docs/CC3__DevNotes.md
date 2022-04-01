@@ -7,8 +7,8 @@
     </tr>
     <tr>
         <td>4/1/2022</td><td>bg</td>
-            Changed render-mode for Blazor components to "Server"<br/>
 		<td>
+            Changed render-mode for Blazor components to "Server"<br/>
 		</td>
     </tr>
     <tr>
