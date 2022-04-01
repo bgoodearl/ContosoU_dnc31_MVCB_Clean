@@ -6,6 +6,12 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>4/1/2022</td><td>bg</td>
+            Changed render-mode for Blazor components to "Server"<br/>
+		<td>
+		</td>
+    </tr>
+    <tr>
         <td>3/27/2022</td><td>bg</td>
 		<td>
             Changed http port in launchSettings to fix VS2019 debug startup<br/>
