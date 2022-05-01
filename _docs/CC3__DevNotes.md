@@ -6,6 +6,12 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>5/1/2022</td><td>bg</td>
+		<td>
+            Added bootstrap formatting for tables<br/>
+		</td>
+    </tr>
+    <tr>
         <td>4/1/2022</td><td>bg</td>
 		<td>
             Changed render-mode for Blazor components to "Server"<br/>
