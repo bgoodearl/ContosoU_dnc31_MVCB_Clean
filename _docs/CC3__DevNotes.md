@@ -6,6 +6,12 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>5/9/2022</td><td>bg</td>
+		<td>
+            Fix problem with first instructor's courses<br/>
+		</td>
+    </tr>
+    <tr>
         <td>5/1/2022</td><td>bg</td>
 		<td>
             Added bootstrap formatting for tables<br/>

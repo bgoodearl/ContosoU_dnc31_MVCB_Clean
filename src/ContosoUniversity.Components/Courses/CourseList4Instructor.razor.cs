@@ -16,10 +16,10 @@ namespace ContosoUniversity.Components.Courses
         [Parameter] public int InstructorID { get; set; }
         [Parameter] public EventCallback<SchoolItemEventArgs> SchoolItemAction { get; set; }
 
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor.
         [Inject] ISender Mediator { get; set; }
         [Inject] ILogger<CourseList4Instructor> Logger { get; set; }
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8618
 
         protected bool Loading { get; set; }
 
@@ -47,7 +47,7 @@ namespace ContosoUniversity.Components.Courses
                 else
                 {
                     Logger.LogInformation($"CourseList.LoadDataFromDb Instr ID = {InstructorID} itemCount = {CourseItemList.Count()}");
-                    //await InvokeAsync(() => StateHasChanged());
+                    await InvokeAsync(() => StateHasChanged()); //Needed to get first instructor's courses to load
                 }
             }
             catch (Exception ex)
