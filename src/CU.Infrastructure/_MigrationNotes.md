@@ -62,7 +62,8 @@ To re-run the initial migration for this project, you'll need to start with an e
 **IMPORTANT**: update setting of **$devsolpath** and **$connstring** for your environment!<br/>
 Command to run in powershell:
 ```powershell
-$devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean"; $srcschema = "0"; $dstschema = "Schema1";
+$devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
+$srcschema = "0"; $dstschema = "Schema1";
 $connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniv_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
 $dalproj = "CU.Infrastructure"
 
@@ -85,7 +86,8 @@ migrations add $dstschema `
 **IMPORTANT**: update setting of **$devsolpath** and **$connstring** for your environment!<br/>
 Command to run in powershell:
 ```powershell
-$devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean"; $srcschema = "0"; $dstschema = "Schema1";
+$devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
+$srcschema = "0"; $dstschema = "Schema1";
 $connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniv_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
 $dalproj = "CU.Infrastructure"
 
@@ -107,3 +109,59 @@ database update `
 --connection-provider "System.Data.SqlClient" `
 1> $devsolpath\SqlScripts\Schema\$dstschema.sql
 ```
+
+### Migration: Schema1a_addLookups
+
+Command to run in powershell:
+```powershell
+$devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
+$srcschema = "Schema1"; $dstschema = "Schema1a_addLookups";
+$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniv_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
+$dalproj = "CU.Infrastructure"
+
+dotnet exec `
+--depsfile $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.deps.json `
+--additionalprobingpath C:\Users\$env:username\.nuget\packages `
+--additionalprobingpath "C:\Program Files\dotnet\sdk\NuGetFallbackFolder" `
+--runtimeconfig $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.runtimeconfig.json `
+C:\Users\$env:username\.nuget\packages\entityframework\6.4.4\tools\netcoreapp3.0\any\ef6.dll `
+migrations add $dstschema `
+--json --verbose --no-color --prefix-output --assembly $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.dll `
+--project-dir $devsolpath\src\$dalproj\ --language C# --root-namespace $dalproj `
+--connection-string $connstring `
+--connection-provider "System.Data.SqlClient"
+```
+
+#### SQL script
+
+```powershell
+$devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
+$srcschema = "Schema1"; $dstschema = "Schema1a_addLookups";
+$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniv_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
+$dalproj = "CU.Infrastructure"
+
+dotnet exec `
+--depsfile $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.deps.json `
+--additionalprobingpath C:\Users\$env:username\.nuget\packages `
+--additionalprobingpath "C:\Program Files\dotnet\sdk\NuGetFallbackFolder" `
+--runtimeconfig $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.runtimeconfig.json `
+C:\Users\$env:username\.nuget\packages\entityframework\6.4.4\tools\netcoreapp3.0\any\ef6.dll `
+database update `
+--source $srcschema `
+--target $dstschema `
+--script --verbose --no-color --prefix-output `
+--assembly $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.dll `
+--project-dir $devsolpath\src\$dalproj\ `
+--language C# `
+--root-namespace $dalproj `
+--connection-string $connstring `
+--connection-provider "System.Data.SqlClient" `
+1> $devsolpath\SqlScripts\Schema\$dstschema.sql
+```
+
+## Migrations List
+
+Migrations               | Description
+------------------------ | -----
+Schema1                  | Initial Schema
+Schema1a_addLookups      | Add CourseType and InstructorType lookups

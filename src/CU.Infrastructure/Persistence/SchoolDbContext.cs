@@ -3,6 +3,7 @@ using ContosoUniversity.Models;
 using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
+using ContosoUniversity.Models.Lookups;
 
 namespace CU.Infrastructure.Persistence
 {
@@ -26,6 +27,16 @@ namespace CU.Infrastructure.Persistence
         public DbSet<Student> Students { get; set; }
 
         #endregion Persistent Entities
+
+
+        #region Lookups
+
+        public DbSet<LookupBaseWith2cKey> LookupsWith2cKey { get; set; }
+        public DbSet<CoursePresentationType> CoursePresentationTypes { get; set; }
+        public DbSet<DepartmentFacilityType> DepartmentFacilityTypes { get; set; }
+
+        #endregion Lookups
+
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

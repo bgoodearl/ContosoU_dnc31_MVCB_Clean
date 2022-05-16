@@ -1,4 +1,5 @@
 ﻿using Ardalis.GuardClauses;
+using ContosoUniversity.Models.Lookups;
 using CU.SharedKernel.Base;
 using System;
 using System.Collections.Generic;
@@ -48,5 +49,13 @@ namespace ContosoUniversity.Models
 
         public virtual Instructor Administrator { get; set; }
         public virtual ICollection<Course> Courses { get; set; }
+
+        private ICollection<DepartmentFacilityType> _departmentFacilityTypes;
+        public virtual ICollection<DepartmentFacilityType> DepartmentFacilityTypes
+        {
+            get { return _departmentFacilityTypes ?? (_departmentFacilityTypes = new List<DepartmentFacilityType>()); }
+            protected set { _departmentFacilityTypes = value; }
+        }
+
     }
 }

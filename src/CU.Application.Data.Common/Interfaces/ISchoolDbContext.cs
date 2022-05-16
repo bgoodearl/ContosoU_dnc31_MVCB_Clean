@@ -1,4 +1,5 @@
 ﻿using ContosoUniversity.Models;
+using ContosoUniversity.Models.Lookups;
 using System;
 using System.Data.Entity;
 using System.Threading;
@@ -14,6 +15,14 @@ namespace CU.Application.Data.Common.Interfaces
         DbSet<Instructor> Instructors { get; }
         DbSet<OfficeAssignment> OfficeAssignments { get; }
         DbSet<Student> Students { get; }
+
+        #region Lookups
+
+        DbSet<LookupBaseWith2cKey> LookupsWith2cKey { get; }
+        DbSet<CoursePresentationType> CoursePresentationTypes { get; }
+        DbSet<DepartmentFacilityType> DepartmentFacilityTypes { get; }
+
+        #endregion Lookups
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 

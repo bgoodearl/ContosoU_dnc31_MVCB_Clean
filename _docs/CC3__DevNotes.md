@@ -6,6 +6,14 @@
 		<th>Notes</th>
     </tr>
     <tr>
+        <td>5/15/2022</td><td>bg</td>
+		<td>
+            Branch - with_lookups:
+            Added CoursePresentationType and DepartmentFacilityType with
+            many-to-many links<br/>
+		</td>
+    </tr>
+    <tr>
         <td>5/9/2022</td><td>bg</td>
 		<td>
             Fix problem with first instructor's courses<br/>
