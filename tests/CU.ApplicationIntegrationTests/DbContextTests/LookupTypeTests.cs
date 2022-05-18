@@ -41,7 +41,7 @@ namespace CU.ApplicationIntegrationTests.DbContextTests
         }
 
         [SkippableFact]
-        public async Task CanDepartmentFacilityTypes()
+        public async Task CanGetDepartmentFacilityTypes()
         {
             using (var scope = _fixture.GetServiceScopeFactory(_testOutputHelper).CreateScope())
             {
@@ -58,6 +58,24 @@ namespace CU.ApplicationIntegrationTests.DbContextTests
                 var lastLookup = lookupList.OrderBy(l => l.Code).Last();
                 lastLookup.Should().NotBeNull();
                 _testOutputHelper.WriteLine($"Last lookup of type {lookupTypeName}  Code = [{lastLookup.Code}], Name = [{lastLookup.Name}]");
+            }
+        }
+
+        [SkippableFact]
+        public async Task CanGetLookupTypes()
+        {
+            using (var scope = _fixture.GetServiceScopeFactory(_testOutputHelper).CreateScope())
+            {
+                ISchoolDbContext cuContext = scope.ServiceProvider.GetRequiredService<ISchoolDbContext>();
+                List<LookupType> lookupTypes = await cuContext.LookupTypes.ToListAsync();
+                lookupTypes.Should().NotBeNull();
+                Skip.If(lookupTypes.Count == 0, "No lookup types in list - cannot complete test");
+                var firstLookupType = lookupTypes.OrderBy(l => l.Id).First();
+                firstLookupType.Should().NotBeNull();
+                _testOutputHelper.WriteLine($"First LookupType Id={firstLookupType.Id}, TypeName=[{firstLookupType.TypeName}], BaseTypeName=[{firstLookupType.BaseTypeName}]");
+                var lastLookupType = lookupTypes.Last();
+                lastLookupType.Should().NotBeNull();
+                _testOutputHelper.WriteLine($"Last  LookupType Id={lastLookupType.Id}, TypeName=[{lastLookupType.TypeName}], BaseTypeName=[{lastLookupType.BaseTypeName}]");
             }
         }
     }
