@@ -6,6 +6,7 @@ using System.Data.Entity.Migrations;
 using System.Threading.Tasks;
 using CU.Application.Data.Common.Interfaces;
 using ContosoUniversity.Models.Lookups;
+using CU.Definitions.Lookups;
 
 namespace CU.Infrastructure.Persistence
 {
@@ -173,6 +174,34 @@ namespace CU.Infrastructure.Persistence
                     context.Enrollments.AddRange(enrollments);
                     saveChangeCount += await context.SaveChangesAsync(new System.Threading.CancellationToken());
                 }
+            }
+
+            if (!context.CoursePresentationTypes.Any())
+            {
+                context.CoursePresentationTypes.Add(new CoursePresentationType
+                    { Code = CoursePresentationTypeCodes.InPerson, Name = "In Person" }
+                    );
+                context.CoursePresentationTypes.Add(new CoursePresentationType
+                    { Code = CoursePresentationTypeCodes.Virtual, Name = "Virtual" }
+                    );
+                saveChangeCount += await context.SaveChangesAsync(new System.Threading.CancellationToken());
+            }
+
+            if (!context.DepartmentFacilityTypes.Any())
+            {
+                context.DepartmentFacilityTypes.Add(new DepartmentFacilityType
+                    { Code = DepartmentFacilityCodes.Auditorium, Name = nameof(DepartmentFacilityCodes.Auditorium) }
+                    );
+                context.DepartmentFacilityTypes.Add(new DepartmentFacilityType
+                    { Code = DepartmentFacilityCodes.Classroom, Name = nameof(DepartmentFacilityCodes.Classroom) }
+                    );
+                context.DepartmentFacilityTypes.Add(new DepartmentFacilityType
+                    { Code = DepartmentFacilityCodes.Lab, Name = nameof(DepartmentFacilityCodes.Lab) }
+                    );
+                context.DepartmentFacilityTypes.Add(new DepartmentFacilityType
+                    { Code = DepartmentFacilityCodes.LectureHall, Name = "Lecture Hall" }
+                    );
+                saveChangeCount += await context.SaveChangesAsync(new System.Threading.CancellationToken());
             }
 
             return saveChangeCount;

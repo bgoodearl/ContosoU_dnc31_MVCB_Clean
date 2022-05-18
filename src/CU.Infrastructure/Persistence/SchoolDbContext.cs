@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Threading;
 using System.Threading.Tasks;
 using ContosoUniversity.Models.Lookups;
+using System.Linq;
 
 namespace CU.Infrastructure.Persistence
 {
@@ -42,6 +43,19 @@ namespace CU.Infrastructure.Persistence
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             return await base.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task<bool> SeedDataNeededAsync()
+        {
+            if ((await Students.CountAsync() == 0) || (await Instructors.CountAsync() == 0)
+                        || (await Courses.CountAsync() == 0) || (await Enrollments.CountAsync() == 0)
+                        || (await LookupTypes.CountAsync() == 0)
+                        || (await CoursePresentationTypes.CountAsync() == 0)
+                        || (await DepartmentFacilityTypes.CountAsync() == 0))
+            {
+                return true;
+            }
+            return false;
         }
 
         public async Task<int> SeedInitialDataAsync()

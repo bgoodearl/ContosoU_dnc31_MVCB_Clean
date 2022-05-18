@@ -27,6 +27,7 @@ namespace CU.Application.Data.Common.Interfaces
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
+        Task<bool> SeedDataNeededAsync();
         Task<int> SeedInitialDataAsync();
     }
 }

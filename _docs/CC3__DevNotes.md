@@ -9,6 +9,7 @@
         <td>5/18/2022</td><td>bg</td>
 		<td>
             Reran migration Schema1a_addLookups including DbSet of LookupType<br/>
+            Added seeding of lookups and related integration tests<br/>
 		</td>
     </tr>
     <tr>
