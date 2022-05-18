@@ -1,4 +1,4 @@
-USE ContosoUniversity_c31_dev;
+USE ContosoU_c31_dev2;
 GO
 
 Declare   @DoClean bit;

@@ -309,7 +309,8 @@ namespace ContosoUniversity.Controllers
                 ISchoolDbContext ctx = SchoolDbContext;
                 {
                     if ((ctx.Students.Count() == 0) || (ctx.Instructors.Count() == 0)
-                        || (ctx.Courses.Count() == 0) || (ctx.Enrollments.Count() == 0))
+                        || (ctx.Courses.Count() == 0) || (ctx.Enrollments.Count() == 0)
+                        || (ctx.LookupTypes.Count() == 0))
                     {
                         int saveChangeCount = await ctx.SeedInitialDataAsync();
                         Logger.LogInformation($"Seeded database with {saveChangeCount} changes");

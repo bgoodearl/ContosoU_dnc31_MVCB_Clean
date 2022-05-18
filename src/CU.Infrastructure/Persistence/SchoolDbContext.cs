@@ -32,6 +32,7 @@ namespace CU.Infrastructure.Persistence
         #region Lookups
 
         public DbSet<LookupBaseWith2cKey> LookupsWith2cKey { get; set; }
+        public DbSet<LookupType> LookupTypes { get; set; }
         public DbSet<CoursePresentationType> CoursePresentationTypes { get; set; }
         public DbSet<DepartmentFacilityType> DepartmentFacilityTypes { get; set; }
 

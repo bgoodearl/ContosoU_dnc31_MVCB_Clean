@@ -13,7 +13,7 @@ namespace CU.Infrastructure.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202205151937052_Schema1a_addLookups"; }
+            get { return "202205181548401_Schema1a_addLookups"; }
         }
         
         string IMigrationMetadata.Source

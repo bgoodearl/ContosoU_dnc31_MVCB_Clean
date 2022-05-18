@@ -20,6 +20,16 @@
                 .Index(t => new { t.LookupTypeId, t.Name }, unique: true, name: "LookupTypeAndName");
             
             CreateTable(
+                "dbo.xLookupTypes",
+                c => new
+                    {
+                        Id = c.Short(nullable: false),
+                        TypeName = c.String(nullable: false, maxLength: 50),
+                        BaseTypeName = c.String(nullable: false, maxLength: 50),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo._coursesPresentationTypes",
                 c => new
                     {
@@ -62,6 +72,7 @@
             DropIndex("dbo.xLookups2cKey", "LookupTypeAndName");
             DropTable("dbo._departmentsFacilityTypes");
             DropTable("dbo._coursesPresentationTypes");
+            DropTable("dbo.xLookupTypes");
             DropTable("dbo.xLookups2cKey");
         }
     }

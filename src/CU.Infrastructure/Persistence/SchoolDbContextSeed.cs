@@ -5,6 +5,7 @@ using ContosoUniversity.Models;
 using System.Data.Entity.Migrations;
 using System.Threading.Tasks;
 using CU.Application.Data.Common.Interfaces;
+using ContosoUniversity.Models.Lookups;
 
 namespace CU.Infrastructure.Persistence
 {
@@ -13,6 +14,11 @@ namespace CU.Infrastructure.Persistence
         internal static async Task<int> SeedInitialData(ISchoolDbContext context)
         {
             int saveChangeCount = 0;
+
+            if (!context.LookupTypes.Any())
+            {
+                saveChangeCount += await SeedLookupTypes(context);
+            }
 
             bool haveStudents = false;
             if (context.Students.Any())
@@ -185,6 +191,29 @@ namespace CU.Infrastructure.Persistence
                 }
             }
             return false;
+        }
+
+        internal static async Task<int> SeedLookupTypes(ISchoolDbContext context)
+        {
+            int changeCount = 0;
+            var lookupTypes = LookupType.GetDbInitializationList();
+            if (lookupTypes != null)
+            {
+                List<LookupType> toAdd = new List<LookupType>();
+                var ltIdsFromDb = context.LookupTypes.Select(lt => lt.Id).ToList();
+                foreach (var lt in lookupTypes)
+                {
+                    if (!ltIdsFromDb.Contains(lt.Id))
+                        toAdd.Add(lt);
+                }
+                if (toAdd.Count > 0)
+                {
+                    foreach (var lt in toAdd)
+                        context.LookupTypes.Add(lt);
+                    changeCount += await context.SaveChangesAsync(new System.Threading.CancellationToken());
+                }
+            }
+            return changeCount;
         }
     }
 }

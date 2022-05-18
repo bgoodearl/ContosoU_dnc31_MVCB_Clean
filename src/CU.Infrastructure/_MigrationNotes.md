@@ -32,7 +32,7 @@ Powershell command line (NOT Package Manager Console):
 ```powershell
 $devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
 $dalproj = "CU.Infrastructure"
-$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniversity_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
+$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoU_c31_dev2;Integrated Security=SSPI;MultipleActiveResultSets=True;"
 
 dotnet exec `
 --depsfile $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.deps.json `
@@ -64,7 +64,7 @@ Command to run in powershell:
 ```powershell
 $devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
 $srcschema = "0"; $dstschema = "Schema1";
-$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniv_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
+$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoU_c31_dev2;Integrated Security=SSPI;MultipleActiveResultSets=True;"
 $dalproj = "CU.Infrastructure"
 
 dotnet exec `
@@ -88,7 +88,7 @@ Command to run in powershell:
 ```powershell
 $devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
 $srcschema = "0"; $dstschema = "Schema1";
-$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniv_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
+$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoU_c31_dev2;Integrated Security=SSPI;MultipleActiveResultSets=True;"
 $dalproj = "CU.Infrastructure"
 
 dotnet exec `
@@ -116,7 +116,7 @@ Command to run in powershell:
 ```powershell
 $devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
 $srcschema = "Schema1"; $dstschema = "Schema1a_addLookups";
-$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniv_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
+$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoU_c31_dev2;Integrated Security=SSPI;MultipleActiveResultSets=True;"
 $dalproj = "CU.Infrastructure"
 
 dotnet exec `
@@ -126,18 +126,18 @@ dotnet exec `
 --runtimeconfig $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.runtimeconfig.json `
 C:\Users\$env:username\.nuget\packages\entityframework\6.4.4\tools\netcoreapp3.0\any\ef6.dll `
 migrations add $dstschema `
---json --verbose --no-color --prefix-output --assembly $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.dll `
+--json --no-color --prefix-output --assembly $devsolpath\src\$dalproj\bin\Debug\netcoreapp3.1\$dalproj.dll `
 --project-dir $devsolpath\src\$dalproj\ --language C# --root-namespace $dalproj `
 --connection-string $connstring `
---connection-provider "System.Data.SqlClient"
+--connection-provider "System.Data.SqlClient" --verbose
 ```
 
-#### SQL script
+#### Schema1a_addLookups SQL script
 
 ```powershell
 $devsolpath = "D:\_dev\GitHub\bgoodearl\Blazor\ContosoU_dnc31_MVCB_Clean";
 $srcschema = "Schema1"; $dstschema = "Schema1a_addLookups";
-$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoUniv_c31_dev;Integrated Security=SSPI;MultipleActiveResultSets=True;"
+$connstring = "data source=.\SQLEXPRESS;initial catalog=ContosoU_c31_dev2;Integrated Security=SSPI;MultipleActiveResultSets=True;"
 $dalproj = "CU.Infrastructure"
 
 dotnet exec `

@@ -53,6 +53,15 @@ namespace CU.Infrastructure.Persistence
                 .HasRequired(oa => oa.Instructor).WithOptional(i => i.OfficeAssignment);
 
 
+            //*******************************************
+            #region LookupType / xLookupTypes
+
+            modelBuilder.Entity<LookupType>()
+                .HasKey(x => x.Id)
+                .ToTable("xLookupTypes");
+
+            #endregion LookupType / xLookupTypes
+
 
             //*******************************************
             #region LookupBaseWith2cKey Subclass Mappings

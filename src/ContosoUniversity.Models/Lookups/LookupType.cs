@@ -57,6 +57,11 @@ namespace ContosoUniversity.Models.Lookups
             return lookupType;
         }
 
+        public static List<LookupType> GetDbInitializationList()
+        {
+            return LookupTypesList;
+        }
+
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

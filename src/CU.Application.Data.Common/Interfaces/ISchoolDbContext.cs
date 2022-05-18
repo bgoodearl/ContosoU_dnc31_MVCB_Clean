@@ -19,6 +19,7 @@ namespace CU.Application.Data.Common.Interfaces
         #region Lookups
 
         DbSet<LookupBaseWith2cKey> LookupsWith2cKey { get; }
+        DbSet<LookupType> LookupTypes { get; }
         DbSet<CoursePresentationType> CoursePresentationTypes { get; }
         DbSet<DepartmentFacilityType> DepartmentFacilityTypes { get; }
 
